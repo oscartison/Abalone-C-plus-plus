@@ -45,10 +45,12 @@ public:
     game();
 
     /*!
-    * \brief Constructor.
+    * \brief notifies all the observers that a change was made
     *
-    * a new game is created with a new board and new players
+    * this method will give an instance of the object self to
+    * the observers, so that they can update according to the change
     *
+    * \param message the message to send to the observer
     */
     void notify(std::string message) override;
 

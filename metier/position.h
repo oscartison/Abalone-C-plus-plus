@@ -2,7 +2,7 @@
 #define POSITION_H
 
 /*!
- * \brief class that represents a position.
+ * \brief class that represents a position to a system with 3 axis
  *
  * this position is a position that a marble will have.
  */
@@ -10,12 +10,17 @@ class position {
     /*!
     * \brief the position on the x axis.
     */
-    int x_axis_;
+    int x_;
 
     /*!
     * \brief the position on the y axis.
     */
-    char y_axis_;
+    int y_;
+
+    /*!
+    * \brief the position on the z axis.
+    */
+    int z_;
 
 public:
 
@@ -28,22 +33,31 @@ public:
     *
     * \param y the y-position.
     *
+    * \param y the y-position.
+    *
     */
-    position(int x, int y);
+    position(int x, int y, int z);
 
     /*!
      * \brief getter for the position on the x-axis
      *
      * \return the position on the x-axis
      */
-    int x_axis() const;
+    int x() const;
 
     /*!
      * \brief getter for the position on the y-axis.
      *
      * \return the position on the y-axis.
      */
-    char y_axis() const;
+    char y() const;
+
+    /*!
+     * \brief getter for the position on the z-axis.
+     *
+     * \return the position on the z-axis.
+     */
+    char z() const;
 
     /*!
      * \brief checks if a position is possible according to a certain
@@ -61,8 +75,10 @@ public:
      * \param dx how much to move on the x-axis
      *
      * \param dy how much to move on the y-axis
+     *
+     * \param dy how much to move on the y-axis
      */
-    void move(int dx, int dy);
+    void move(int dx, int dy, int dz);
 
 
 };

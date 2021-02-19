@@ -30,7 +30,7 @@ public:
     * \param message the message sent by the observable
     *
     */
-    virtual void update(observable obs,std::string message);
+    virtual void update(observable obs,std::string message) = 0;
 };
 
 #endif // OBSERVER_H

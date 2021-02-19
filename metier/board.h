@@ -23,10 +23,9 @@ class board {
     const int size_;
 
     /*!
-    * \brief a 2d array of pointers to the marbles of the game.
-    * A marble at A1 will be located a board[0][0]
+    * \brief a vector with all the marbles on the board
     */
-    marble ***board_;
+    std::vector<marble *> marbles_;
 
     /*!
     * \brief the amount of marbles on the board.
@@ -64,11 +63,11 @@ public:
     int size() const;
 
     /*!
-     * \brief getter for the 2d array with the marbles on the board
+     * \brief getter for the vector with the marbles on the board
      *
-     * \return the 2d array with the marbles on the board
+     * \return the vector with the marbles on the board
      */
-    marble*** marbles() const;
+    std::vector<marble *> marbles() const;
 
     /*!
     * \brief checks for a marble at a certain position

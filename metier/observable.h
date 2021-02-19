@@ -23,7 +23,7 @@ public:
     *
     * \param obs the observer to add
     */
-    virtual void addObserver(observer obs);
+    virtual void addObserver(observer obs) = 0;
 
     /*!
     * \brief notifies all the observers that a change was made
@@ -33,7 +33,7 @@ public:
     *
     * \param message the message to send to the observer
     */
-    virtual void notify(std::string message);
+    virtual void notify(std::string message) = 0;
 };
 
 #endif // OBSERVABLE_H

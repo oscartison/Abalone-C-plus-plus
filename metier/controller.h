@@ -25,7 +25,7 @@ public:
     /*!
     * \brief starts the game
     */
-    void startGame(game game);
+    void startGame();
 };
 
 #endif // CONTROLLER_H

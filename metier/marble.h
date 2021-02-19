@@ -31,11 +31,9 @@ public:
     *
     * \param player the player whos marble it is.
     *
-    * \param pos the initial position of the marble
-    *
     * \throw std::invalid_argument if player or position is null.
     */
-    marble(player play, position pos);
+    marble(player play);
 
 
     /*!
@@ -44,20 +42,6 @@ public:
      * \return the player of the marble
      */
     player player() const;
-
-    /*!
-     * \brief getter for the position of the marble
-     *
-     * \return the position of the marble
-     */
-    position positionMarble() const;
-
-    /*!
-     * \brief getter for the player of the marble
-     *
-     * \param newPos the new position
-     */
-    void changePosition(position newPos);
 
 };
 

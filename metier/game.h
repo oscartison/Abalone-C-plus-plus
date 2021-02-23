@@ -55,6 +55,13 @@ public:
     void notify(std::string message) override;
 
     /*!
+    * \brief adds a class that observs this one
+    *
+    * \param obs the observer to add
+    */
+    void addObserver(observer obs) override;
+
+    /*!
      * \brief getter for the player whos turn it is
      *
      * \return the player whos turn it is.
@@ -124,7 +131,7 @@ public:
                   position posEndFirst);
 
     /*!
-     * \brief chamges whos turn it is to play.
+     * \brief changes whos turn it is to play.
      */
     void changeTurn();
 };

@@ -33,7 +33,7 @@ public:
     *
     * \param y the y-position.
     *
-    * \param y the y-position.
+    * \param z the y-position.
     *
     */
     position(int x, int y, int z);

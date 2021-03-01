@@ -17,10 +17,6 @@ class marble {
     */
     const player player_;
 
-    /*!
-    * \brief the position of the marble on the board.
-    */
-    position positionMarble_;
 
 public:
 
@@ -31,11 +27,9 @@ public:
     *
     * \param player the player whos marble it is.
     *
-    * \param position the position where the marble is.
-    *
-    * \throw std::invalid_argument if player or position is null.
+    * \throw std::invalid_argument if player is null.
     */
-    marble(player play, position pos);
+    marble(player play);
 
 
     /*!
@@ -45,12 +39,6 @@ public:
      */
     player player() const;
 
-    /*!
-     * \brief getter for the position of the marble
-     *
-     * \return the position of the marble
-     */
-    position position();
 
 };
 

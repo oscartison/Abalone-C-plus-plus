@@ -8,7 +8,6 @@ SOURCES += \
 
 HEADERS += \
     board.h \
-    controller.h \
     game.h \
     marble.h \
     observable.h \

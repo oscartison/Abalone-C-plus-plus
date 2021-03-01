@@ -20,12 +20,12 @@ class board {
     *
     * This number is constant
     */
-    const int size_;
+    const static int size_ = 9;
 
     /*!
     * \brief a vector with all the marbles on the board
     */
-    std::vector<marble *> marbles_;
+    marble marbles_[size_][size_][size_];
 
     /*!
     * \brief the amount of marbles on the board.
@@ -41,11 +41,11 @@ public:
     *
     * The size cannot be null.
     *
-    * \param size size of the board
+    * \param playerBlack the first player of the board
     *
-    * \throw std::invalid_argument if size is null.
+    * \param playerWhite the second player of the board
     */
-    board(int size, player playerBlack, player playerWhite);
+    board(player playerBlack, player playerWhite);
 
     /*!
      * \brief getter for number of marbles
@@ -67,7 +67,7 @@ public:
      *
      * \return the vector with the marbles on the board
      */
-    std::vector<marble *> marbles() const;
+    marble* marbles() const;
 
     /*!
     * \brief checks for a marble at a certain position
@@ -113,20 +113,9 @@ public:
     */
     void makeMove(position posBegin, position posEnd);
 
-    /*!
-    * \brief checks if a move is possible from a certain position to another.
-    *
-    * \param posBegin the initial position of the marble.
-    *
-    * \param posEnd the position where the marble has to go
-    *
-    * \return true if the move is possible,
-    * false otherwise
-    */
-    bool isMovePossible(position posBegin, position posEnd);
 
     /*!
-    * \brief makes a group of marvels move from a certain position to another.
+    * \brief makes a group of marbels move from a certain position to another.
     *
     *
     * \param posBeginFirst the initial position of the first marble of a group.
@@ -137,19 +126,7 @@ public:
     */
     void makeMove(position posBeginFirst,position posBeginLast, position posEnd);
 
-    /*!
-    * \brief checks if a move is possible from a certain position to another.
-    *
-    * \param posBeginFirst the initial position of the first marble of a group.
-    *
-    * \param posBeginLast the initial position of the last marble of a group.
-    *
-    * \param posEnd the position where the marble has to go
-    *
-    * \return true if the move is possible,
-    * false otherwise
-    */
-    bool isMovePossible(position posBeginFirst,position posBeginLast, position posEnd);
+
 };
 
 #endif // BOARD_H

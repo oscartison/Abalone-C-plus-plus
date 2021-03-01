@@ -72,25 +72,34 @@ public:
     /*!
      * \brief moves the position a of dx and dy.
      *
-     * \param dx how much to move on the x-axis
+     * \param dx how much to move on the x-axis.
      *
-     * \param dy how much to move on the y-axis
+     * \param dy how much to move on the y-axis.
      *
-     * \param dy how much to move on the y-axis
+     * \param dy how much to move on the y-axis.
      */
     void move(int dx, int dy, int dz);
+
+    /*!
+     * \brief computes the distance between two positions.
+     *
+     * \param po2 the second position.
+     *
+     * \return the distance between the two positions.
+     */
+    int distance(position po2);
 
 
 };
 
 /*!
- * \brief the - operator for 2 positions
+ * \brief the - operator for 2 positions.
  *
- * \param p1 the first position
+ * \param p1 the first position.
  *
- * \param p2 the second position
+ * \param p2 the second position.
  *
- * \return the substraction of the 2 positions
+ * \return the substraction of the 2 positions.
  */
 position operator-(const position p1, const position p2);
 

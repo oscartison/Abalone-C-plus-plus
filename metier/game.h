@@ -40,7 +40,6 @@ public:
     * \brief Constructor.
     *
     * a new game is created with a new board and new players
-    *
     */
     game();
 
@@ -129,6 +128,32 @@ public:
     void makeMove(position posBeginFirst,
                   position posBeginLast,
                   position posEndFirst);
+
+    /*!
+    * \brief checks if a move is possible from a certain position to another.
+    *
+    * \param posBegin the initial position of the marble.
+    *
+    * \param posEnd the position where the marble has to go
+    *
+    * \return true if the move is possible,
+    * false otherwise
+    */
+    bool isMovePossible(position posBegin, position posEnd);
+
+    /*!
+    * \brief checks if a move is possible from a certain position to another.
+    *
+    * \param posBeginFirst the initial position of the first marble of a group.
+    *
+    * \param posBeginLast the initial position of the last marble of a group.
+    *
+    * \param posEnd the position where the marble has to go
+    *
+    * \return true if the move is possible,
+    * false otherwise
+    */
+    bool isMovePossible(position posBeginFirst,position posBeginLast, position posEnd);
 
     /*!
      * \brief changes whos turn it is to play.

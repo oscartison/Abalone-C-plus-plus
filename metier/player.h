@@ -15,7 +15,7 @@ class player
     /*!
     * \brief the amount of marbles the player has left.
     */
-    int nbMarble_;
+    int nbMarbles_;
 
   public:
 
@@ -43,7 +43,7 @@ class player
      *
      * \return the amount of marbles the player has left.
      */
-    int nbMarble() const;
+    int nbMarbles() const;
 
     /*!
      * \brief reduces the number of marble the players has by 1.

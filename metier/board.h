@@ -3,6 +3,7 @@
 
 #include <vector>
 #include <list>
+#include <optional>
 #include <marble.h>
 #include "observable.h"
 #include "observer.h"
@@ -25,7 +26,7 @@ class board {
     /*!
     * \brief a vector with all the marbles on the board
     */
-    marble marbles_[size_][size_][size_];
+    std::optional<marble> marbles_[size_][size_][size_];
 
     /*!
     * \brief the amount of marbles on the board.
@@ -77,7 +78,7 @@ public:
     * \return the marble at this position,
     * if there is no marble it returns null
     */
-    marble marbleAtPosition(position pos);
+    marble marbleAtPosition(position pos) const;
 
     /*!
     * \brief checks if a position is possible
@@ -95,7 +96,7 @@ public:
     * \return the player at this position,
     * if there is no player it returns null
     */
-    player playerAtPosition(position pos);
+    player playerAtPosition(position pos) const;
 
     /*!
     * \brief deletes the marble at this position
@@ -111,7 +112,7 @@ public:
     *
     * \param posEnd the position where the marble has to go
     */
-    void makeMove(position posBegin, position posEnd);
+    void changePosition(position posBegin, position posEnd);
 
 
     /*!
@@ -124,7 +125,7 @@ public:
     *
     * \param posEnd the position where the first marble has to go
     */
-    void makeMove(position posBeginFirst,position posBeginLast, position posEnd);
+    void changePosition(position posBeginFirst,position posBeginLast, position posEnd);
 
 
 };

@@ -35,6 +35,11 @@ class game: public observable {
     */
     player playerTurn_;
 
+    /*!
+    * \brief The number of marbles that where moved during this turn
+    */
+    int nbPlays_;
+
 public:
     /*!
     * \brief Constructor.
@@ -66,6 +71,13 @@ public:
      * \return the player whos turn it is.
      */
     player playerTurn() const;
+
+    /*!
+     * \brief getter for the number of marbles moved
+     *
+     * \return the ammount of marbles moved during this turn.
+     */
+    int nbPlays() const;
 
     /*!
      * \brief getter for the board of the game

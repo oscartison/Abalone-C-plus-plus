@@ -6,7 +6,7 @@
  *
  * this position is a position that a marble will have.
  */
-class position {
+class Position {
     /*!
     * \brief the position on the x axis.
     */
@@ -36,7 +36,7 @@ public:
     * \param z the y-position.
     *
     */
-    position(int x, int y, int z);
+    Position(int x, int y, int z);
 
     /*!
      * \brief getter for the position on the x-axis
@@ -87,7 +87,7 @@ public:
      *
      * \return the distance between the two positions.
      */
-    int distance(position po2);
+    int distance(Position po2);
 
 
 };
@@ -101,7 +101,7 @@ public:
  *
  * \return the substraction of the 2 positions.
  */
-position operator-(const position p1, const position p2);
+Position operator-(const Position p1, const Position p2);
 
 /*!
  * \brief the + operator for 2 positions
@@ -112,7 +112,7 @@ position operator-(const position p1, const position p2);
  *
  * \return the sum of the 2 positions
  */
-position operator+(const position p1, const position p2);
+Position operator+(const Position p1, const Position p2);
 
 
 #endif // POSITION_H

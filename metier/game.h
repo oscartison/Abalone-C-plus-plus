@@ -8,32 +8,32 @@
  *
  * this class is the current state of the game.
  */
-class game: public observable {
+class Game: public Observable {
     /*!
     * \brief  list with all the observers of this observable
     */
-    std::list<observer *> list_observer_;
+    std::list<Observer *> list_observer_;
 
     /*!
     * \brief the actual board of the current game.
     */
-    board gameBoard_;
+    Board gameBoard_;
 
     /*!
     * \brief The player with the white marbles
     */
-    player playerWhite_;
+    Player playerWhite_;
 
     /*!
     * \brief The player with the black marbles
     */
-    player playerBlack_;
+    Player playerBlack_;
 
 
     /*!
     * \brief The player that is playing for the moment
     */
-    player playerTurn_;
+    Player playerTurn_;
 
     /*!
     * \brief The number of marbles that where moved during this turn
@@ -46,7 +46,7 @@ public:
     *
     * a new game is created with a new board and new players
     */
-    game();
+    Game();
 
     /*!
     * \brief notifies all the observers that a change was made
@@ -63,14 +63,14 @@ public:
     *
     * \param obs the observer to add
     */
-    void addObserver(observer obs) override;
+    void addObserver(Observer obs) override;
 
     /*!
      * \brief getter for the player whos turn it is
      *
      * \return the player whos turn it is.
      */
-    player playerTurn() const;
+    Player playerTurn() const;
 
     /*!
      * \brief getter for the number of marbles moved
@@ -79,27 +79,20 @@ public:
      */
     int nbPlays() const;
 
-    /*!
-     * \brief getter for the board of the game
-     *
-     * \return the board of the game
-     */
-    player gameBoard() const;
-
 
     /*!
      * \brief getter for the player that is playing with the white marbles
      *
      * \return the player that is playing with the white marbles
      */
-    player playerWhite() const;
+    Player playerWhite() const;
 
     /*!
      * \brief getter for the player that is playing with the black marbles
      *
      * \return the player that is playing with the black marbles
      */
-    player playerBlack() const;
+    Player playerBlack() const;
 
     /*!
      * \brief checks if someone won the game.
@@ -122,8 +115,8 @@ public:
     *
     * \param posEnd the position where the first marble has to go
     */
-    void makeMove(position posBegin,
-                  position posEnd);
+    void makeMove(Position posBegin,
+                  Position posEnd);
 
     /*!
     * \brief makes a group of marvels move from a certain position to another. The move can
@@ -137,9 +130,9 @@ public:
     *
     * \param posEnd the position where the first marble has to go
     */
-    void makeMove(position posBeginFirst,
-                  position posBeginLast,
-                  position posEndFirst);
+    void makeMove(Position posBeginFirst,
+                  Position posBeginLast,
+                  Position posEndFirst);
 
     /*!
     * \brief checks if a move is possible from a certain position to another.
@@ -151,7 +144,7 @@ public:
     * \return true if the move is possible,
     * false otherwise
     */
-    bool isMovePossible(position posBegin, position posEnd);
+    bool isMovePossible(Position posBegin, Position posEnd);
 
     /*!
     * \brief checks if a move is possible from a certain position to another.
@@ -165,7 +158,7 @@ public:
     * \return true if the move is possible,
     * false otherwise
     */
-    bool isMovePossible(position posBeginFirst,position posBeginLast, position posEnd);
+    bool isMovePossible(Position posBeginFirst,Position posBeginLast, Position posEnd);
 
     /*!
      * \brief changes whos turn it is to play.

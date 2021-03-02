@@ -5,7 +5,7 @@
  *
  * player 1 will play the black marbles, player 2 the white ones.
  */
-class player
+class Player
 {
     /*!
     * \brief the number of the player
@@ -29,7 +29,7 @@ class player
     *
     * \throw std::invalid_argument if the nb is not 1 or 2.
     */
-    player(int nb);
+    Player(int nb);
 
     /*!
      * \brief getter for the number of the player

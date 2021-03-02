@@ -9,7 +9,7 @@
  * an observer class is a class that will be updated when he
  * is notified by the observable that a change was made.
  */
-class observer {
+class Observer {
 public:
 
     /*!
@@ -17,7 +17,7 @@ public:
     *
     * constructs an observer.
     */
-    virtual ~observer();
+    virtual ~Observer();
 
     /*!
     * \brief updates the observer
@@ -30,7 +30,7 @@ public:
     * \param message the message sent by the observable
     *
     */
-    virtual void update(observable obs,std::string message) = 0;
+    virtual void update(Observable obs,std::string message) = 0;
 };
 
 #endif // OBSERVER_H

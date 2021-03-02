@@ -10,12 +10,12 @@
  * a marbles contains the player that owns this marble,
  * it will determine its color.
  */
-class marble {
+class Marble {
 
     /*!
     * \brief The player whos marble it is.
     */
-    const player player_;
+    const Player player_;
 
 
 public:
@@ -29,7 +29,7 @@ public:
     *
     * \throw std::invalid_argument if player is null.
     */
-    marble(player play);
+    Marble(Player play);
 
 
     /*!
@@ -37,7 +37,7 @@ public:
      *
      * \return the player of the marble
      */
-    player player() const;
+    Player player() const;
 
 
 };

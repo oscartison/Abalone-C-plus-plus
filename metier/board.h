@@ -3,6 +3,7 @@
 
 #include <vector>
 #include <list>
+#include <array>
 #include <optional>
 #include <marble.h>
 #include "observable.h"
@@ -14,7 +15,7 @@
  * with the size of the board and
  * the position of all the marbles on the board, the game board is fully represented.
  */
-class board {
+class Board {
 
     /*!
     * \brief The size of the game board.
@@ -24,9 +25,9 @@ class board {
     const static int size_ = 9;
 
     /*!
-    * \brief a vector with all the marbles on the board
+    * \brief an array with all the marbles on the board
     */
-    std::optional<marble> marbles_[size_][size_][size_];
+    std::array<std::array<std::array<Marble,size_>,size_>, size_> marbles_ ;
 
     /*!
     * \brief the amount of marbles on the board.
@@ -46,7 +47,7 @@ public:
     *
     * \param playerWhite the second player of the board
     */
-    board(player playerBlack, player playerWhite);
+    Board(Player playerBlack, Player playerWhite);
 
     /*!
      * \brief getter for number of marbles
@@ -68,7 +69,7 @@ public:
      *
      * \return the vector with the marbles on the board
      */
-    marble* marbles() const;
+    std::array<std::array<std::array<Marble,size_>,size_>, size_> marbles() const;
 
     /*!
     * \brief checks for a marble at a certain position
@@ -78,7 +79,7 @@ public:
     * \return the marble at this position,
     * if there is no marble it returns null
     */
-    marble marbleAtPosition(position pos) const;
+    Marble marbleAtPosition(Position pos) const;
 
     /*!
     * \brief checks if a position is possible
@@ -88,7 +89,7 @@ public:
     *
     * \return true if the position is possible, false otherwise
     */
-    bool isPosPossible(position pos);
+    bool isPosPossible(Position pos);
 
     /*!
     * \brief checks for a player at a certain position
@@ -96,14 +97,14 @@ public:
     * \return the player at this position,
     * if there is no player it returns null
     */
-    player playerAtPosition(position pos) const;
+    Player playerAtPosition(Position pos) const;
 
     /*!
     * \brief deletes the marble at this position
     *
     * \param pos the position to delete
     */
-    void deleteAtPos(position pos);
+    void deleteAtPos(Position pos);
 
     /*!
     * \brief makes a marble move from a certain position to another.
@@ -112,7 +113,7 @@ public:
     *
     * \param posEnd the position where the marble has to go
     */
-    void changePosition(position posBegin, position posEnd);
+    void changePosition(Position posBegin, Position posEnd);
 
 
     /*!
@@ -125,7 +126,7 @@ public:
     *
     * \param posEnd the position where the first marble has to go
     */
-    void changePosition(position posBeginFirst,position posBeginLast, position posEnd);
+    void changePosition(Position posBeginFirst,Position posBeginLast, Position posEnd);
 
 
 };

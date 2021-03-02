@@ -9,21 +9,21 @@
  * an observable class is a class that will notify his observers
  * that a change was
  */
-class observable {
+class Observable {
 public:
     /*!
     * \brief Constructor.
     *
     * constructs an observable.
     */
-    virtual ~observable();
+    virtual ~Observable();
 
     /*!
     * \brief adds a class that observs this one
     *
     * \param obs the observer to add
     */
-    virtual void addObserver(observer obs) = 0;
+    virtual void addObserver(Observer obs) = 0;
 
     /*!
     * \brief notifies all the observers that a change was made

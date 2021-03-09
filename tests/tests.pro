@@ -1,7 +1,13 @@
-TEMPLATE = app
-CONFIG += console c++11
-CONFIG -= app_bundle
-CONFIG -= qt
+include(../defaults.pri)
 
-SOURCES += \
-        main.cpp
+TEMPLATE = app
+CONFIG += console
+
+LIBS += -L../lib -llibcore
+
+SOURCES += main.cpp \
+    simple.cpp \
+    scenario.cpp
+
+HEADERS += \
+    catch.hpp \

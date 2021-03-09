@@ -37,9 +37,13 @@ public:
      *
      * \return the player of the marble
      */
-    Player player() const;
+    inline Player player() const;
 
 
 };
+
+Player Marble::player() const {
+    return player_;
+}
 
 #endif // MARBLE_H

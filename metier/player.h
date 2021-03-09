@@ -36,14 +36,14 @@ class Player
      *
      * \return the number of the player
      */
-    int nb() const;
+    inline int nb() const;
 
     /*!
      * \brief getter for the amount of marbles the player has left.
      *
      * \return the amount of marbles the player has left.
      */
-    int nbMarbles() const;
+    inline int nbMarbles() const;
 
     /*!
      * \brief reduces the number of marble the players has by 1.
@@ -51,5 +51,13 @@ class Player
     void deleteMarble();
 
 };
+
+int Player::nb() const {
+    return nb_;
+}
+
+int Player::nbMarbles() const {
+    return nbMarbles_;
+}
 
 #endif // PLAYER_H

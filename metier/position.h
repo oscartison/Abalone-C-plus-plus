@@ -43,21 +43,21 @@ public:
      *
      * \return the position on the x-axis
      */
-    int x() const;
+    inline int x() const;
 
     /*!
      * \brief getter for the position on the y-axis.
      *
      * \return the position on the y-axis.
      */
-    char y() const;
+    inline int y() const;
 
     /*!
      * \brief getter for the position on the z-axis.
      *
      * \return the position on the z-axis.
      */
-    char z() const;
+    inline int z() const;
 
     /*!
      * \brief checks if a position is possible according to a certain
@@ -114,5 +114,17 @@ Position operator-(const Position p1, const Position p2);
  */
 Position operator+(const Position p1, const Position p2);
 
+
+int Position::x() const {
+    return x_;
+}
+
+int Position::y() const {
+    return y_;
+}
+
+int Position::z() const {
+    return z_;
+}
 
 #endif // POSITION_H

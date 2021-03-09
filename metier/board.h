@@ -54,7 +54,7 @@ public:
      *
      * \return amount of marbles
      */
-    int nbMarbles();
+    inline int nbMarbles();
 
 
     /*!
@@ -62,14 +62,14 @@ public:
      *
      * \return size of the board
      */
-    int size() const;
+    inline int size() const;
 
     /*!
      * \brief getter for the vector with the marbles on the board
      *
      * \return the vector with the marbles on the board
      */
-    std::array<std::array<std::array<Marble,size_>,size_>, size_> marbles() const;
+    inline std::array<std::array<std::array<Marble,size_>,size_>, size_> marbles() const;
 
     /*!
     * \brief checks for a marble at a certain position
@@ -130,5 +130,20 @@ public:
 
 
 };
+
+int Board::nbMarbles() {
+    return nbMarbles_;
+}
+
+
+int Board::size() const {
+    return size_;
+}
+
+
+std::array<std::array<std::array<Marble,9>,9>, 9> Board::marbles() const {
+    return marbles_;
+}
+
 
 #endif // BOARD_H

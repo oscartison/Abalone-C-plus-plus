@@ -70,14 +70,14 @@ public:
      *
      * \return the player whos turn it is.
      */
-    Player playerTurn() const;
+    inline Player playerTurn() const;
 
     /*!
      * \brief getter for the number of marbles moved
      *
      * \return the ammount of marbles moved during this turn.
      */
-    int nbPlays() const;
+    inline int nbPlays() const;
 
 
     /*!
@@ -85,14 +85,14 @@ public:
      *
      * \return the player that is playing with the white marbles
      */
-    Player playerWhite() const;
+    inline Player playerWhite() const;
 
     /*!
      * \brief getter for the player that is playing with the black marbles
      *
      * \return the player that is playing with the black marbles
      */
-    Player playerBlack() const;
+    inline Player playerBlack() const;
 
     /*!
      * \brief checks if someone won the game.
@@ -165,5 +165,22 @@ public:
      */
     void changeTurn();
 };
+
+Player Game::playerTurn() const {
+    return playerTurn_;
+}
+
+int Game::nbPlays() const {
+    return nbPlays_;
+}
+
+Player Game::playerWhite() const {
+    return playerWhite_;
+}
+
+
+Player Game::playerBlack() const {
+    return playerBlack_;
+}
 
 #endif // GAME_H

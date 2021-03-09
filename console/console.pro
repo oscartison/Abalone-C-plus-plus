@@ -1,7 +1,15 @@
-TEMPLATE = app
-CONFIG += console c++11
-CONFIG -= app_bundle
-CONFIG -= qt
+include(../defaults.pri)
 
-SOURCES += \
-        main.cpp
+#you MUST include headers to subprojects, for instance like this
+#"core" is not added here because it's already in defaults.pri
+
+#INCLUDEPATH += $$PWD/../controllers
+
+TEMPLATE = app
+CONFIG += console
+
+LIBS += -L../lib -llibcore \
+
+SOURCES += main.cpp \
+
+HEADERS +=

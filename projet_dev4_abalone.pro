@@ -1,7 +1,12 @@
-TEMPLATE = app
-CONFIG += console c++11
-CONFIG -= app_bundle
-CONFIG -= qt
+TEMPLATE = subdirs
+SUBDIRS += \
+    metier \
+    console \
+    gui \
+    tests \
 
 SOURCES += \
         main.cpp
+
+OTHER_FILES += \
+    defaults.pri

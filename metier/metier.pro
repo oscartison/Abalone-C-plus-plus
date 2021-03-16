@@ -13,3 +13,9 @@ HEADERS += \
     observer.h \
     player.h \
     position.h
+
+SOURCES += \
+    game.cpp \
+    marble.cpp \
+    player.cpp \
+    position.cpp

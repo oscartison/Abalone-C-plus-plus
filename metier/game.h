@@ -15,11 +15,6 @@ class Game: public Observable {
     std::list<Observer *> list_observer_;
 
     /*!
-    * \brief the actual board of the current game.
-    */
-    Board gameBoard_;
-
-    /*!
     * \brief The player with the white marbles
     */
     Player playerWhite_;
@@ -34,6 +29,11 @@ class Game: public Observable {
     * \brief The player that is playing for the moment
     */
     Player playerTurn_;
+
+    /*!
+    * \brief the actual board of the current game.
+    */
+    Board gameBoard_;
 
     /*!
     * \brief The number of marbles that where moved during this turn
@@ -64,6 +64,8 @@ public:
     * \param obs the observer to add
     */
     void addObserver(Observer obs) override;
+
+    inline std::list<Observer *> list_observer();
 
     /*!
      * \brief getter for the player whos turn it is
@@ -181,6 +183,10 @@ Player Game::playerWhite() const {
 
 Player Game::playerBlack() const {
     return playerBlack_;
+}
+
+std::list<Observer *> Game::list_observer() {
+    return list_observer_;
 }
 
 #endif // GAME_H

@@ -1,4 +1,4 @@
-INCLUDEPATH += $$PWD/core
+INCLUDEPATH += $$PWD/metier
 
 SRC_DIR = $$PWD
 

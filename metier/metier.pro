@@ -1,7 +1,7 @@
 include(../defaults.pri)
 
 TEMPLATE = lib
-TARGET = libcore
+TARGET = libmetier
 DESTDIR = ../lib
 
 
@@ -20,3 +20,4 @@ SOURCES += \
     marble.cpp \
     player.cpp \
     position.cpp
+

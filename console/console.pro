@@ -8,8 +8,8 @@ include(../defaults.pri)
 TEMPLATE = app
 CONFIG += console
 
-LIBS += -L../lib -llibcore \
+LIBS += -L../lib -llibmetier \
 
-SOURCES += main.cpp \
+SOURCES +=
 
 HEADERS +=

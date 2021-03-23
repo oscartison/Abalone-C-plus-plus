@@ -10,6 +10,7 @@ CONFIG += console
 
 LIBS += -L../lib -llibmetier \
 
-SOURCES +=
+SOURCES += \
+    main.cpp
 
 HEADERS +=

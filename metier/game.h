@@ -63,7 +63,7 @@ public:
     *
     * \param obs the observer to add
     */
-    void addObserver(Observer obs) override;
+    void addObserver(Observer * obs) override;
 
     inline std::list<Observer *> list_observer();
 

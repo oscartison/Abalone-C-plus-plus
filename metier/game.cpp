@@ -18,8 +18,8 @@ void Game::notify(std::string message) {
     }
 }
 
-void Game::addObserver(Observer obs) {
-    list_observer().push_back(&obs);
+void Game::addObserver(Observer * obs) {
+    list_observer().push_back(obs);
 }
 
 bool Game::checkWon() {

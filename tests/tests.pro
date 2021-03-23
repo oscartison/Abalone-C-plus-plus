@@ -5,6 +5,6 @@ CONFIG += console
 
 LIBS += -L../lib -llibmetier \
 
-SOURCES += main.cpp \
+SOURCES += main.cpp
 
 HEADERS +=

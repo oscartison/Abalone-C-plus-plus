@@ -23,7 +23,7 @@ public:
     *
     * \param obs the observer to add
     */
-    virtual void addObserver(Observer obs) = 0;
+    virtual void addObserver(Observer * obs) = 0;
 
     /*!
     * \brief notifies all the observers that a change was made

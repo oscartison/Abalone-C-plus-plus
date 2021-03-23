@@ -24,5 +24,5 @@ void Position::move(int dx, int dy, int dz) {
 }
 
 int Position::distance(Position po2) {
-    return std::max(abs(x_ - po2.x()), abs(y_ - po2.y()), abs(z_ - po2.z()));
+    return std::max({abs(x_ - po2.x()), abs(y_ - po2.y()), abs(z_ - po2.z())});
 }

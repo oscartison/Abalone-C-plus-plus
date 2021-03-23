@@ -3,6 +3,8 @@
 #include <string>
 #include "observable.h"
 
+class Observable;
+
 /*!
  * \brief abstract Class that defines an observer class
  *
@@ -30,7 +32,7 @@ public:
     * \param message the message sent by the observable
     *
     */
-    virtual void update(Observable obs,std::string message) = 0;
+    virtual void update(Observable * obs,std::string message) = 0;
 };
 
 #endif // OBSERVER_H

@@ -6,8 +6,7 @@
 #include <array>
 #include <optional>
 #include <marble.h>
-#include "observable.h"
-#include "observer.h"
+
 
 /*!
  * \brief Class that represents a board in the game abalone.

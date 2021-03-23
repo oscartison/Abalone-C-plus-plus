@@ -27,7 +27,7 @@ class Board {
     /*!
     * \brief an array with all the marbles on the board
     */
-    std::array<std::array<std::array<Marble,size_>,size_>, size_> marbles_ ;
+    std::array<std::array<std::array<std::optional<Marble*>,size_>,size_>, size_> marbles_ ;
 
     /*!
     * \brief the amount of marbles on the board.
@@ -69,7 +69,7 @@ public:
      *
      * \return the vector with the marbles on the board
      */
-    inline std::array<std::array<std::array<Marble,size_>,size_>, size_> marbles() const;
+    inline std::array<std::array<std::array<std::optional<Marble*>,size_>,size_>, size_> marbles() const;
 
     /*!
     * \brief checks for a marble at a certain position
@@ -79,7 +79,7 @@ public:
     * \return the marble at this position,
     * if there is no marble it returns null
     */
-    Marble marbleAtPosition(Position pos) const;
+    std::optional<Marble*> marbleAtPosition(Position pos);
 
     /*!
     * \brief checks if a position is possible
@@ -128,7 +128,6 @@ public:
     */
     void changePosition(Position posBeginFirst,Position posBeginLast, Position posEnd);
 
-
 };
 
 int Board::nbMarbles() {
@@ -141,7 +140,7 @@ int Board::size() const {
 }
 
 
-std::array<std::array<std::array<Marble,9>,9>, 9> Board::marbles() const {
+std::array<std::array<std::array<std::optional<Marble*>,9>,9>, 9> Board::marbles() const {
     return marbles_;
 }
 

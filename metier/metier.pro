@@ -15,6 +15,7 @@ HEADERS += \
     position.h
 
 SOURCES += \
+    board.cpp \
     game.cpp \
     marble.cpp \
     player.cpp \

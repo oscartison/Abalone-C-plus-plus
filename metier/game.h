@@ -28,7 +28,7 @@ class Game: public Observable {
     /*!
     * \brief The player that is playing for the moment
     */
-    Player playerTurn_;
+    Player * playerTurn_;
 
     /*!
     * \brief the actual board of the current game.
@@ -72,7 +72,7 @@ public:
      *
      * \return the player whos turn it is.
      */
-    inline Player playerTurn() const;
+    inline Player * playerTurn() const;
 
     /*!
      * \brief getter for the number of marbles moved
@@ -87,14 +87,14 @@ public:
      *
      * \return the player that is playing with the white marbles
      */
-    inline Player playerWhite() const;
+    inline Player & playerWhite();
 
     /*!
      * \brief getter for the player that is playing with the black marbles
      *
      * \return the player that is playing with the black marbles
      */
-    inline Player playerBlack() const;
+    inline Player & playerBlack();
 
     /*!
      * \brief checks if someone won the game.
@@ -103,7 +103,7 @@ public:
      *
      * a player won if the other has lost 6 marbles.
      */
-    bool checkWon() const;
+    bool checkWon() ;
 
     /*!
     * \brief makes a marble move from a certain position to another. The move can
@@ -166,9 +166,11 @@ public:
      * \brief changes whos turn it is to play.
      */
     void changeTurn();
+
+    void setTurn(Player &player);
 };
 
-Player Game::playerTurn() const {
+Player * Game::playerTurn() const {
     return playerTurn_;
 }
 
@@ -176,12 +178,12 @@ int Game::nbPlays() const {
     return nbPlays_;
 }
 
-Player Game::playerWhite() const {
+Player & Game::playerWhite() {
     return playerWhite_;
 }
 
 
-Player Game::playerBlack() const {
+Player & Game::playerBlack() {
     return playerBlack_;
 }
 

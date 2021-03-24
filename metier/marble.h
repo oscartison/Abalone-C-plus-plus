@@ -15,7 +15,7 @@ class Marble {
     /*!
     * \brief The player whos marble it is.
     */
-    const Player player_;
+    Player player_;
 
 
 public:
@@ -29,7 +29,7 @@ public:
     *
     * \throw std::invalid_argument if player is null.
     */
-    Marble(Player play);
+    Marble(Player & play);
 
 
     /*!
@@ -37,13 +37,13 @@ public:
      *
      * \return the player of the marble
      */
-    inline Player player() const;
+    inline Player * player();
 
 
 };
 
-Player Marble::player() const {
-    return player_;
+Player * Marble::player() {
+    return &player_;
 }
 
 #endif // MARBLE_H

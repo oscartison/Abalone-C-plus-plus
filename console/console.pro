@@ -11,6 +11,8 @@ CONFIG += console
 LIBS += -L../lib -llibmetier \
 
 SOURCES += \
-    main.cpp
+    main.cpp \
+    vue.cpp
 
-HEADERS +=
+HEADERS += \
+    vue.h

@@ -18,6 +18,7 @@ SOURCES += \
     board.cpp \
     game.cpp \
     marble.cpp \
+    observable.cpp \
     player.cpp \
     position.cpp
 

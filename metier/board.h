@@ -6,6 +6,7 @@
 #include <array>
 #include <optional>
 #include <marble.h>
+#include <iostream>
 
 
 /*!
@@ -46,7 +47,7 @@ public:
     *
     * \param playerWhite the second player of the board
     */
-    Board(Player playerBlack, Player playerWhite);
+    Board(Player & playerBlack, Player & playerWhite);
 
     /*!
      * \brief getter for number of marbles
@@ -78,7 +79,7 @@ public:
     * \return the marble at this position,
     * if there is no marble it returns null
     */
-    std::optional<Marble*> marbleAtPosition(Position pos);
+    Marble* marbleAtPosition(Position pos);
 
     /*!
     * \brief checks if a position is possible
@@ -96,7 +97,7 @@ public:
     * \return the player at this position,
     * if there is no player it returns null
     */
-    Player playerAtPosition(Position pos) const;
+    Player * playerAtPosition(Position pos) ;
 
     /*!
     * \brief deletes the marble at this position
@@ -127,6 +128,8 @@ public:
     */
     void changePosition(Position posBeginFirst,Position posBeginLast, Position posEnd);
 
+
+    std::string to_string(Board & board);
 };
 
 int Board::nbMarbles() {

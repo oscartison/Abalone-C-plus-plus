@@ -2,6 +2,7 @@
 #define GAME_H
 #include "board.h"
 #include "observable.h"
+#include <ostream>
 
 /*!
  * \brief Class that represents a the game
@@ -41,29 +42,15 @@ class Game: public Observable {
     int nbPlays_;
 
 public:
+
     /*!
-    * \brief Constructor.
-    *
-    * a new game is created with a new board and new players
-    */
+     * \brief Destructeur virtuel par défaut car utilisation
+     *        polymorphique.
+     */
+    virtual ~Game() = default;
+
     Game();
 
-    /*!
-    * \brief notifies all the observers that a change was made
-    *
-    * this method will give an instance of the object self to
-    * the observers, so that they can update according to the change
-    *
-    * \param message the message to send to the observer
-    */
-    void notify(std::string message) override;
-
-    /*!
-    * \brief adds a class that observs this one
-    *
-    * \param obs the observer to add
-    */
-    void addObserver(Observer * obs) override;
 
     inline std::list<Observer *> list_observer();
 
@@ -162,13 +149,21 @@ public:
     */
     bool isMovePossible(Position posBeginFirst,Position posBeginLast, Position posEnd);
 
+    void stringToMovement(std::string s);
     /*!
      * \brief changes whos turn it is to play.
      */
     void changeTurn();
 
     void setTurn(Player &player);
+
+    std::string to_string(const Game & game);
+
+
 };
+
+std::ostream & operator<<(std::ostream & out,
+                          const Game & game);
 
 Player * Game::playerTurn() const {
     return playerTurn_;

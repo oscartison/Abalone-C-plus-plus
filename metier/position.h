@@ -1,5 +1,6 @@
 #ifndef POSITION_H
 #define POSITION_H
+#include <iostream>
 
 /*!
  * \brief class that represents a position to a system with 3 axis
@@ -113,6 +114,8 @@ Position operator-(const Position p1, const Position p2);
  * \return the sum of the 2 positions
  */
 Position operator+(const Position p1, const Position p2);
+
+Position abaToPos(std::string s);
 
 
 int Position::x() const {

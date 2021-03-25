@@ -24,13 +24,13 @@ int main()
                std::getline(std::cin, s);
                game.stringToMovement(s);
                lectureReussie = true;
-               std::cout <<s <<std::endl;
            }
            catch (const std::exception & e)
            {
                    std::cout << e.what() << std::endl;
            }
        }
+
    }
 
 }

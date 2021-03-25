@@ -150,6 +150,7 @@ public:
     bool isMovePossible(Position posBeginFirst,Position posBeginLast, Position posEnd);
 
     void stringToMovement(std::string s);
+
     /*!
      * \brief changes whos turn it is to play.
      */

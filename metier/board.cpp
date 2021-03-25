@@ -46,12 +46,24 @@ Player * Board::playerAtPosition(Position pos)  {
 
 void Board::deleteAtPos(Position pos) {
     if(marbleAtPosition(pos)) {
-        free(marbleAtPosition(pos));
+        //delete (marbleAtPosition(pos));
+        *marbles_[pos.x()][pos.y()][pos.z()] = NULL;
     }
 }
 
 bool Board::isPosPossible(Position pos) {
     return pos.isPossiblePos(size());
+}
+
+void Board::changePosition(Position posBegin, Position posEnd) {
+    if(isPosPossible(posEnd)) {
+        std::cout << marbleAtPosition(posBegin)->player()->nb() <<std::endl;
+        marbles_[posEnd.x()][posEnd.y()][posEnd.z()] = marbles_[posBegin.x()][posBegin.y()][posBegin.z()];
+        deleteAtPos(posBegin);
+    } else {
+        marbleAtPosition(posBegin)->player()->deleteMarble();
+        deleteAtPos(posBegin);
+    }
 }
 
 std::string Board::to_string(Board & board) {

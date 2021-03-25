@@ -8,7 +8,6 @@
 #include <marble.h>
 #include <iostream>
 
-
 /*!
  * \brief Class that represents a board in the game abalone.
  *
@@ -34,7 +33,8 @@ class Board {
     */
     int nbMarbles_;
 
-public:
+public :
+
     /*!
     * \brief Constructor.
     *
@@ -55,7 +55,6 @@ public:
      * \return amount of marbles
      */
     inline int nbMarbles();
-
 
     /*!
      * \brief getter for the size of the board
@@ -115,7 +114,6 @@ public:
     */
     void changePosition(Position posBegin, Position posEnd);
 
-
     /*!
     * \brief makes a group of marbels move from a certain position to another.
     *
@@ -128,23 +126,20 @@ public:
     */
     void changePosition(Position posBeginFirst,Position posBeginLast, Position posEnd);
 
-
     std::string to_string(Board & board);
+
 };
 
 int Board::nbMarbles() {
     return nbMarbles_;
 }
 
-
 int Board::size() const {
     return size_;
 }
 
-
 std::array<std::array<std::array<std::optional<Marble*>,9>,9>, 9> Board::marbles() const {
     return marbles_;
 }
-
 
 #endif // BOARD_H

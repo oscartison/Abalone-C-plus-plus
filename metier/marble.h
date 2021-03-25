@@ -17,8 +17,7 @@ class Marble {
     */
     Player player_;
 
-
-public:
+public :
 
     /*!
     * \brief Constructor.
@@ -31,14 +30,12 @@ public:
     */
     Marble(Player & play);
 
-
     /*!
      * \brief getter for the player of the marble
      *
      * \return the player of the marble
      */
     inline Player * player();
-
 
 };
 

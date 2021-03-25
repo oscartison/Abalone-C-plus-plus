@@ -4,7 +4,6 @@ TEMPLATE = lib
 TARGET = libmetier
 DESTDIR = ../lib
 
-
 HEADERS += \
     board.h \
     game.h \
@@ -21,4 +20,3 @@ SOURCES += \
     observable.cpp \
     player.cpp \
     position.cpp
-

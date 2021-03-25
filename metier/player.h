@@ -1,12 +1,13 @@
 #ifndef PLAYER_H
 #define PLAYER_H
+
 /*!
  * \brief class that represents a player
  *
  * player 1 will play the black marbles, player 2 the white ones.
  */
-class Player
-{
+class Player {
+
     /*!
     * \brief the number of the player
     */
@@ -17,7 +18,7 @@ class Player
     */
     int nbMarbles_;
 
-  public:
+public :
 
     /*!
     * \brief Constructor.

@@ -1,5 +1,6 @@
 #ifndef GAME_H
 #define GAME_H
+
 #include "board.h"
 #include "observable.h"
 #include <ostream>
@@ -10,6 +11,7 @@
  * this class is the current state of the game.
  */
 class Game: public Observable {
+
     /*!
     * \brief  list with all the observers of this observable
     */
@@ -24,7 +26,6 @@ class Game: public Observable {
     * \brief The player with the black marbles
     */
     Player playerBlack_;
-
 
     /*!
     * \brief The player that is playing for the moment
@@ -41,7 +42,7 @@ class Game: public Observable {
     */
     int nbPlays_;
 
-public:
+public :
 
     /*!
      * \brief Destructeur virtuel par défaut car utilisation
@@ -50,7 +51,6 @@ public:
     virtual ~Game() = default;
 
     Game();
-
 
     inline std::list<Observer *> list_observer();
 
@@ -67,7 +67,6 @@ public:
      * \return the ammount of marbles moved during this turn.
      */
     inline int nbPlays() const;
-
 
     /*!
      * \brief getter for the player that is playing with the white marbles
@@ -104,8 +103,7 @@ public:
     *
     * \param posEnd the position where the first marble has to go
     */
-    void makeMove(Position posBegin,
-                  Position posEnd);
+    void makeMove(Position posBegin, Position posEnd);
 
     /*!
     * \brief makes a group of marvels move from a certain position to another. The move can
@@ -119,35 +117,7 @@ public:
     *
     * \param posEnd the position where the first marble has to go
     */
-    void makeMove(Position posBeginFirst,
-                  Position posBeginLast,
-                  Position posEndFirst);
-
-    /*!
-    * \brief checks if a move is possible from a certain position to another.
-    *
-    * \param posBegin the initial position of the marble.
-    *
-    * \param posEnd the position where the marble has to go
-    *
-    * \return true if the move is possible,
-    * false otherwise
-    */
-    bool isMovePossible(Position posBegin, Position posEnd);
-
-    /*!
-    * \brief checks if a move is possible from a certain position to another.
-    *
-    * \param posBeginFirst the initial position of the first marble of a group.
-    *
-    * \param posBeginLast the initial position of the last marble of a group.
-    *
-    * \param posEnd the position where the marble has to go
-    *
-    * \return true if the move is possible,
-    * false otherwise
-    */
-    bool isMovePossible(Position posBeginFirst,Position posBeginLast, Position posEnd);
+    void makeMove(Position posBeginFirst, Position posBeginLast, Position posEndFirst);
 
     void stringToMovement(std::string s);
 
@@ -160,11 +130,9 @@ public:
 
     std::string to_string(const Game & game);
 
-
 };
 
-std::ostream & operator<<(std::ostream & out,
-                          const Game & game);
+std::ostream & operator<<(std::ostream & out, const Game & game);
 
 Player * Game::playerTurn() const {
     return playerTurn_;
@@ -177,7 +145,6 @@ int Game::nbPlays() const {
 Player & Game::playerWhite() {
     return playerWhite_;
 }
-
 
 Player & Game::playerBlack() {
     return playerBlack_;

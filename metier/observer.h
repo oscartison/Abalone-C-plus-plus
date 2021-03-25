@@ -1,9 +1,10 @@
 #ifndef OBSERVER_H
 #define OBSERVER_H
+
 #include <string>
 #include "observable.h"
 
- class Observable;
+class Observable;
 
 /*!
  * \brief Classe abstraite de base de tout observateur.
@@ -15,9 +16,9 @@
  * \see https://en.wikipedia.org/wiki/Observer_pattern
  */
 
-class Observer
-{
-  public:
+class Observer {
+
+public :
 
     /*!
      * \brief Méthode virtuelle pure que chaque observateur concret doit
@@ -78,7 +79,7 @@ class Observer
      */
     Observer & operator=(Observer &&) = default;
 
-  protected:
+protected :
 
     /*!
      * \brief Constructeur protégé pour éviter l'instanciation
@@ -91,7 +92,7 @@ class Observer
      * \see https://blog.feabhas.com/2015/11/becoming-a-rule-of-zero-hero/
      */
     Observer() = default;
-};
 
+};
 
 #endif // OBSERVER_H

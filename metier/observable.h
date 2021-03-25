@@ -1,5 +1,6 @@
 #ifndef OBSERVABLE_H
 #define OBSERVABLE_H
+
 #include <vector>
 #include "observer.h"
 
@@ -21,9 +22,9 @@ class Observer;
  *
  * \sa Observer.
  */
-class Observable
-{
-  public:
+class Observable {
+
+public :
 
     /*!
      * \brief Destructeur virtuel par défaut car utilisation polymorphique.
@@ -90,7 +91,7 @@ class Observable
      */
     virtual void unregisterObserver(Observer * observer) final;
 
-  protected:
+protected :
 
     /*!
      * \brief Constructeur protégé pour éviter l'instanciation
@@ -107,12 +108,13 @@ class Observable
      */
     virtual void notifyObservers() const final;
 
-  protected:
+protected :
 
     /*!
      * \brief L'ensemble d'observateurs enregistrés.
      */
     std::set<Observer *> observers_ { };
+
 };
 
 #endif

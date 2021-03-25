@@ -13,12 +13,12 @@ class Game;
  * d'observation, le money::Coin qu'elles observent, dans le
  * flux en sortie standard std::cout.
  */
-class Vue  : public Observer
-{
+class Vue : public Observer {
+
     /*! \brief Le sujet observé. */
     Game * subject_;
 
-  public:
+public :
 
     /*!
      * \brief Constructeur.
@@ -49,7 +49,7 @@ class Vue  : public Observer
      * \param subject Le nvs::Subject qui notifie un changement
      *                d'état.
      */
-    virtual void update(const Observable * subject ) override;
+    virtual void update(const Observable * subject) override;
 
 };
 

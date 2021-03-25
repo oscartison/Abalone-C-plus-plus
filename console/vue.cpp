@@ -3,20 +3,17 @@
 #include <iostream>
 
 Vue::Vue(Game * subject) :
-    subject_ { subject }
+    subject_ {subject}
 {
     subject_->registerObserver(this);
     update(subject_);
 }
 
-Vue::~Vue()
-{
+Vue::~Vue() {
     subject_->unregisterObserver(this);   // essayer sans...
 }
 
-void Vue::update(const Observable * subject)
-{
+void Vue::update(const Observable * subject) {
     if (subject != subject_) return;
-
     std::cout  << *subject_ << std::endl;
 }

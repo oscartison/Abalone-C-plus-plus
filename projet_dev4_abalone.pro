@@ -5,6 +5,5 @@ SUBDIRS += \
     gui \
     tests \
 
-
 OTHER_FILES += \
     defaults.pri

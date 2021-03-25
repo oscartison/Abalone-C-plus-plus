@@ -1,5 +1,6 @@
 #ifndef POSITION_H
 #define POSITION_H
+
 #include <iostream>
 
 /*!
@@ -8,6 +9,7 @@
  * this position is a position that a marble will have.
  */
 class Position {
+
     /*!
     * \brief the position on the x axis.
     */
@@ -23,7 +25,7 @@ class Position {
     */
     int z_;
 
-public:
+public :
 
     /*!
     * \brief Constructor.
@@ -90,7 +92,6 @@ public:
      */
     int distance(Position po2);
 
-
 };
 
 /*!
@@ -116,7 +117,6 @@ Position operator-(const Position p1, const Position p2);
 Position operator+(const Position p1, const Position p2);
 
 Position abaToPos(std::string s);
-
 
 int Position::x() const {
     return x_;

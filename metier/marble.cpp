@@ -2,5 +2,5 @@
 #include <stdexcept>
 
 Marble::Marble(Player & play) :
-    player_ {play}
+    player_ {&play}
 {}

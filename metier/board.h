@@ -28,10 +28,6 @@ class Board {
     */
     std::array<std::array<std::array<std::optional<Marble*>,size_>,size_>, size_> marbles_ ;
 
-    /*!
-    * \brief the amount of marbles on the board.
-    */
-    int nbMarbles_;
 
 public :
 
@@ -49,12 +45,6 @@ public :
     */
     Board(Player & playerBlack, Player & playerWhite);
 
-    /*!
-     * \brief getter for number of marbles
-     *
-     * \return amount of marbles
-     */
-    inline int nbMarbles();
 
     /*!
      * \brief getter for the size of the board
@@ -114,25 +104,10 @@ public :
     */
     void changePosition(Position posBegin, Position posEnd);
 
-    /*!
-    * \brief makes a group of marbels move from a certain position to another.
-    *
-    *
-    * \param posBeginFirst the initial position of the first marble of a group.
-    *
-    * \param posBeginLast the initial position of the last marble of a group.
-    *
-    * \param posEnd the position where the first marble has to go
-    */
-    void changePosition(Position posBeginFirst,Position posBeginLast, Position posEnd);
-
     std::string to_string(Board & board);
 
 };
 
-int Board::nbMarbles() {
-    return nbMarbles_;
-}
 
 int Board::size() const {
     return size_;

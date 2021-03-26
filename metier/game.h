@@ -37,11 +37,6 @@ class Game: public Observable {
     */
     Board gameBoard_;
 
-    /*!
-    * \brief The number of marbles that where moved during this turn
-    */
-    int nbPlays_;
-
 public :
 
     /*!
@@ -60,13 +55,6 @@ public :
      * \return the player whos turn it is.
      */
     inline Player * playerTurn() const;
-
-    /*!
-     * \brief getter for the number of marbles moved
-     *
-     * \return the ammount of marbles moved during this turn.
-     */
-    inline int nbPlays() const;
 
     /*!
      * \brief getter for the player that is playing with the white marbles
@@ -119,6 +107,34 @@ public :
     */
     void makeMove(Position posBeginFirst, Position posBeginLast, Position posEndFirst);
 
+    /*!
+    * \brief checks if a move is possible from a certain position to another.
+    *
+    * \param posBegin the initial position of the marble.
+    *
+    * \param posEnd the position where the marble has to go
+    *
+    * \return true if the move is possible,
+    * false otherwise
+    */
+    bool isMovePossible(Position posBegin);
+
+    /*!
+    * \brief checks if a move is possible from a certain position to another.
+    *
+    * \param posBeginFirst the initial position of the first marble of a group.
+    *
+    * \param posBeginLast the initial position of the last marble of a group.
+    *
+    * \param posEnd the position where the marble has to go
+    *
+    * \return true if the move is possible,
+    * false otherwise
+    */
+    bool isMovePossible(Position posBeginFirst,Position posBeginLast);
+
+    void cleanBoard();
+
     void stringToMovement(std::string s);
 
     /*!
@@ -136,10 +152,6 @@ std::ostream & operator<<(std::ostream & out, const Game & game);
 
 Player * Game::playerTurn() const {
     return playerTurn_;
-}
-
-int Game::nbPlays() const {
-    return nbPlays_;
 }
 
 Player & Game::playerWhite() {

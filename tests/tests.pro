@@ -5,6 +5,9 @@ CONFIG += console
 
 LIBS += -L../lib -llibmetier \
 
-SOURCES += main.cpp
+SOURCES += main.cpp \
+    testboard.cpp \
+    testgame.cpp
 
-HEADERS +=
+HEADERS += \
+    catch.hpp

@@ -2,8 +2,7 @@
 #include <array>
 
 Board::Board(Player & playerBlack, Player &playerWhite) :
-    marbles_ {},
-    nbMarbles_ {28}
+    marbles_ {}
 
 {
     for (auto x = 0; x < size(); x++) {
@@ -42,9 +41,8 @@ Player * Board::playerAtPosition(Position pos)  {
 }
 
 void Board::deleteAtPos(Position pos) {
-    if (marbleAtPosition(pos)) {
+        delete (*marbles_[pos.x()][pos.y()][pos.z()]);
         *marbles_[pos.x()][pos.y()][pos.z()] = NULL;
-    }
 }
 
 bool Board::isPosPossible(Position pos) {
@@ -54,7 +52,7 @@ bool Board::isPosPossible(Position pos) {
 void Board::changePosition(Position posBegin, Position posEnd) {
     if (isPosPossible(posEnd)) {
         marbles_[posEnd.x()][posEnd.y()][posEnd.z()] = marbles_[posBegin.x()][posBegin.y()][posBegin.z()];
-        deleteAtPos(posBegin);
+        *marbles_[posBegin.x()][posBegin.y()][posBegin.z()] = NULL;
     } else {
         marbleAtPosition(posBegin)->player()->deleteMarble();
         deleteAtPos(posBegin);

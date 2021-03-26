@@ -15,7 +15,7 @@ class Marble {
     /*!
     * \brief The player whos marble it is.
     */
-    Player player_;
+    Player * player_;
 
 public :
 
@@ -40,7 +40,7 @@ public :
 };
 
 Player * Marble::player() {
-    return &player_;
+    return player_;
 }
 
 #endif // MARBLE_H

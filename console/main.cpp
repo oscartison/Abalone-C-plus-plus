@@ -9,7 +9,7 @@ int main() {
     Game game = Game();
     Vue vue = Vue(&game);
 
-    while(!game.checkWon()) {
+    while (!game.checkWon()) {
         bool readSuccess { false };
         while (!readSuccess) {
             std::cout << "Please enter a movement in ABA-Pro : ";
@@ -24,4 +24,5 @@ int main() {
             }
         }
     }
+    game.cleanBoard();
 }

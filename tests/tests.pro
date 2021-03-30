@@ -10,4 +10,5 @@ SOURCES += main.cpp \
     testgame.cpp
 
 HEADERS += \
-    catch.hpp
+    catch.hpp \
+    testgame.h

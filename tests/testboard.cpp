@@ -1,5 +1,7 @@
 #include<game.h>
 #include<catch.hpp>
+
+
 TEST_CASE("Test some moves on the board") {
     abalone::model::Player p1 = abalone::model::Player(1);
     abalone::model::Player p2 = abalone::model::Player(2);
@@ -14,7 +16,7 @@ TEST_CASE("Test some moves on the board") {
     SECTION("Move outside the board") {
         board.changePosition(abalone::model::Position(3,3,6), abalone::model::Position(4,4,9));
         REQUIRE_FALSE(board.marbleAtPosition(abalone::model::Position(3,3,6)));
-        REQUIRE(board.playerAtPosition(abalone::model::Position(3,2,7))->nbMarbles() == 13);
+        REQUIRE(p1.nbMarbles() == 13);
     }
 
     SECTION("Is position possible") {
@@ -41,7 +43,7 @@ TEST_CASE("Test some moves on the board") {
         REQUIRE(board.playerAtPosition(abalone::model::Position(3,3,6))->nb() == 1);
     }
 
-    SECTION("Check for [marble at impossible positionplayer at position without player") {
+    SECTION("Check for position at position without player") {
         REQUIRE_FALSE(board.playerAtPosition(abalone::model::Position(4,4,4)));
     }
 

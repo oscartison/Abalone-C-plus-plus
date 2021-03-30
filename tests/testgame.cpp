@@ -1,13 +1,22 @@
 #include<game.h>
+#include<testgame.h>
 #include<catch.hpp>
+
+namespace abalone {
+namespace test {
+
+#define private public;
 TEST_CASE("Test on the game") {
-    abalone::model::Game g = abalone::model::Game();
+    abalone::test::TestGame g = abalone::test::TestGame();
 
     SECTION("Simple Movement in line A1B1") {
-       // g.makeMove(Position(0,4,8),Position(0,5,7));
-        REQUIRE_FALSE(false);
-       // REQUIRE(board.playerAtPosition(Position(4,4,4))->nb() == 1);
+        g.makeMove(abalone::model::Position(8,4,0),abalone::model::Position(8,3,1));
+        REQUIRE(g.getBoard().marbleAtPosition(abalone::model::Position(8,3,1))->player()->nb() == 1 );
+        REQUIRE(g.getBoard().marbleAtPosition(abalone::model::Position(8,2,2))->player()->nb() == 1 );
     }
 
+
+}
+}
 
 }

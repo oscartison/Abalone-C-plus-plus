@@ -10,6 +10,8 @@ class Vue;
 }
 }
 
+
+
 namespace abalone { namespace model {
 /*!
  * \brief Class that represents a the game
@@ -169,15 +171,18 @@ private:
      */
     void changeTurn();
 
+
+
+
+    friend class abalone::view::Vue;
+
+protected:
     /*!
      * \brief a getter for the gameboard
      *
      * \return the gameboard of this game
      */
     inline Board getBoard();
-
-    friend class abalone::view::Vue;
-
 };
 
 

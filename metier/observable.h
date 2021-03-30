@@ -4,27 +4,20 @@
 #include <vector>
 #include "observer.h"
 
-/*!
- * \brief abstract Class that defines an observable class
- *
- * \see NVS  Disclaimer: note that this class was completely implemented by Nicolas Vansteenkiste and was
- * found on in the course material.
- *
- * an observable class is a class that will notify his observers
- * that a change was made
- */
+
 
 #include <set>
 
 class Observer;
 
 /*!
- * \brief Classe de base de tout "sujet d'observation".
+ * \brief abstract Class that defines an observable class
  *
- * Classe dont dérive toute source d'événement (ou "sujet d'observation")
- * du modèle de conception "Observateur / SujetDObservation".
+ * \see NVS  Disclaimer: note that this class was completely implemented by Nicolas Vansteenkiste and was
+ * found in the course material.
  *
- * \sa Observer.
+ * an observable class is a class that will notify his observers
+ * that a change was made
  */
 class Observable {
 
@@ -100,8 +93,6 @@ protected :
      * \sa Observer::update(const Subject *).
      */
     virtual void notifyObservers() const final;
-
-protected :
 
     /*!
      * \brief the set of all observers of this class

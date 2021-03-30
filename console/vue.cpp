@@ -1,8 +1,10 @@
 #include "vue.h"
 #include "game.h"
 #include <iostream>
+namespace abalone {
+namespace view {
 
-Vue::Vue(Game * subject) :
+Vue::Vue(model::Game * subject) :
     subject_ {subject}
 {
     subject_->registerObserver(this);
@@ -13,12 +15,87 @@ Vue::~Vue() {
     subject_->unregisterObserver(this);   // essayer sans...
 }
 
-void Vue::update(const Observable * subject) {
-    if (subject != subject_) return;
-    std::cout  << *subject_ << std::endl;
+void Vue::printWin() {
     if(subject_->playerBlack().nbMarbles() == 8) {
         std::cout << "Player o won!!" << std::endl;
     } else  if(subject_->playerWhite().nbMarbles() == 8){
         std::cout << "Player x won!!" << std::endl;
     }
+}
+
+void Vue::printGame(){
+    std::string output = "";
+    std::cout << "         __________\n";
+    for (auto z = 0; z < subject_->getBoard().size(); z++) {
+        for (auto y = subject_->getBoard().size() - 1; y >= 0; y--) {
+            std::cout << "";
+            for (auto x = 0; x < subject_->getBoard().size(); x++) {
+                abalone::model::Position pos = abalone::model::Position(x,y,z);
+                if (subject_->getBoard().isPosPossible(pos)) {
+                    if (x == 4 && y == 8 && z == 0) {
+                        std::cout << "     I--/";
+                    } else if (x == 3 && y == 8 && z == 1) {
+                        std::cout << "    H--/";
+                    } else if (x == 2 && y == 8 && z == 2) {
+                        std::cout << "   G--/";
+                    } else if (x == 1 && y == 8 && z == 3) {
+                        std::cout << "  F--/";
+                    } else if (x == 0 && y == 8 && z == 4) {
+                        std::cout << " E--<";
+                    } else if (x == 0 && y == 7 && z == 5) {
+                        std::cout << "  D--\\";
+                    } else if (x == 0 && y == 6 && z == 6) {
+                        std::cout << "   C--\\";
+                    } else if (x == 0 && y == 5 && z == 7) {
+                        std::cout << "    B--\\";
+                    } else if (x == 0 && y == 4 && z == 8) {
+                        std::cout << "     A--\\";
+                    }
+
+                    if (subject_->getBoard().playerAtPosition(pos)) {
+                        std::cout << ( (subject_->getBoard().playerAtPosition(pos)->nb() == 1) ? "o ":"x ");
+                    } else {
+                        std::cout <<  ". ";
+                    }
+
+                    if ((x == 8 || y == 0) && z < 4){
+                        std::cout <<  "\\ \n";
+                    } else if (x == 8 || y == 0){
+                        switch (z) {
+                        case 5:
+                            std::cout <<  "/\\ \n";
+                            break;
+                        case 6:
+                            std::cout <<  "/\\ 9 \n";
+                            break;
+                        case 7:
+                            std::cout <<  "/\\ 8 \n";
+                            break;
+                        case 8:
+                            std::cout <<  "/\\ 7 \n";
+                            break;
+                        default:
+                            std::cout <<  ">\n";
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    std::cout << "         -\\-\\-\\-\\-\\  6 \n           1 2 3 4 5" << std::endl;
+}
+
+
+void printWin();
+
+void Vue::update(const Observable * subject) {
+    if (subject != subject_) return;
+    std::string str = "Player turn: ";
+    std::string str2 = (subject_->playerTurn()->nb() == 1) ? "o" : "x";
+    std::cout << str << str2 << std::endl;
+    printGame();
+    printWin();
+}
+}
 }

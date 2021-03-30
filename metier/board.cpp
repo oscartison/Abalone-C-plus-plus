@@ -1,5 +1,6 @@
 #include "board.h"
 #include <array>
+namespace abalone { namespace model {
 
 Board::Board(Player & playerBlack, Player &playerWhite) :
     marbles_ {}
@@ -59,68 +60,6 @@ void Board::changePosition(Position posBegin, Position posEnd) {
     }
 }
 
-std::string Board::to_string(Board & board) {
-    std::string output = "";
-    output+="         __________\n";
-    for (auto z = 0; z < size(); z++) {
-        for (auto y = size() - 1; y >= 0; y--) {
-            output+= "";
-            for (auto x = 0; x < size(); x++) {
-                Position pos = Position(x,y,z);
-                if (board.isPosPossible(pos)) {
-                    if (x == 4 && y == 8 && z == 0) {
-                        output+="     I--/";
-                    } else if (x == 3 && y == 8 && z == 1) {
-                        output+="    H--/";
-                    } else if (x == 2 && y == 8 && z == 2) {
-                        output+="   G--/";
-                    } else if (x == 1 && y == 8 && z == 3) {
-                        output+="  F--/";
-                    } else if (x == 0 && y == 8 && z == 4) {
-                        output+=" E--<";
-                    } else if (x == 0 && y == 7 && z == 5) {
-                        output+="  D--\\";
-                    } else if (x == 0 && y == 6 && z == 6) {
-                        output+="   C--\\";
-                    } else if (x == 0 && y == 5 && z == 7) {
-                        output+="    B--\\";
-                    } else if (x == 0 && y == 4 && z == 8) {
-                        output+="     A--\\";
-                    }
 
-                    if (board.playerAtPosition(pos)) {
-                        output+= (board.playerAtPosition(pos)->nb() == 1) ? "o ":"x ";
-                    } else {
-                        output+= ". ";
-                    }
-
-                    if ((x == 8 || y == 0) && z < 4){
-                        output += "\\ \n";
-                    } else if (x == 8 || y == 0){
-                        switch (z) {
-                        case 5:
-                            output += "/\\ \n";
-                            break;
-                        case 6:
-                            output += "/\\ 9 \n";
-                            break;
-                        case 7:
-                            output += "/\\ 8 \n";
-                            break;
-                        case 8:
-                            output += "/\\ 7 \n";
-                            break;
-                        default:
-                            output += ">\n";
-                        }
-                    }
-                }
-            }
-        }
-    }
-
-    output += "         -\\-\\-\\-\\-\\  6 \n           1 2 3 4 5";
-    output += "\n";
-
-    return output;
 }
+                  }

@@ -4,6 +4,8 @@
 #include "player.h"
 #include "position.h"
 
+namespace abalone { namespace model {
+
 /*!
  * \brief Class that represents the marbles.
  *
@@ -39,8 +41,10 @@ public :
 
 };
 
-Player * Marble::player() {
+
+
+abalone::model::Player * abalone::model::Marble::player() {
     return player_;
 }
-
+}}
 #endif // MARBLE_H

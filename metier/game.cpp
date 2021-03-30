@@ -2,7 +2,7 @@
 #include "board.h"
 #include <list>
 #include <stdexcept>
-
+namespace abalone { namespace model {
 Game::Game():
     list_observer_ {},
     playerWhite_ {Player(1)},
@@ -21,18 +21,6 @@ void Game::changeTurn() {
 
 void Game::setTurn(Player &player) {
     playerTurn_ = &player;
-}
-
-std::string Game::to_string(const Game & game) {
-    std::string str = "Player turn: ";
-    std::string str2 = (game.playerTurn()->nb() == 1) ? "o" : "x";
-    Board b = game.gameBoard_;
-    return b.to_string(b) + "\n" + str + str2 + "\n";
-}
-
-std::ostream & operator<<(std::ostream & out, const Game & game) {
-    Game g = game;
-    return out << g.to_string(game);
 }
 
 void Game::stringToMovement(std::string s) {
@@ -120,27 +108,29 @@ void Game::makeMove(Position posBegin, Position posEnd) {
 }
 
 void Game::makeMove(Position posBeginFirst, Position posBeginLast, Position posEndFirst) {
-    if (isMovePossible(posBeginFirst,posBeginLast)) {
-        Position movement = posBeginFirst - posEndFirst;
-        if (posBeginFirst.distance(posBeginLast) == 1) {
-            if (!gameBoard_.marbleAtPosition(posEndFirst) &&
+    if(isMovePossible(posBeginFirst,posBeginLast)) {
+        Position movement = posBeginFirst - posEndFirst ;
+        if(posBeginFirst.distance(posBeginLast) == 1) {
+            if(!gameBoard_.marbleAtPosition(posEndFirst) &&
                     !gameBoard_.marbleAtPosition(posBeginLast-movement)) {
                 gameBoard_.changePosition(posBeginFirst,posEndFirst);
                 gameBoard_.changePosition(posBeginLast,posBeginLast-movement);
+                std::cout <<"ici";
                 changeTurn();
                 notifyObservers();
             }
-        } else if (posBeginFirst.distance(posBeginLast) == 2) {
+        } else if(posBeginFirst.distance(posBeginLast) == 2) {
             Position middle = Position((posBeginFirst.x()+posBeginLast.x()) / 2,
                                        (posBeginFirst.y()+posBeginLast.y()) / 2,
                                        (posBeginFirst.z()+posBeginLast.z()) / 2);
-            if (!gameBoard_.marbleAtPosition(posEndFirst) &&
+            if(!gameBoard_.marbleAtPosition(posEndFirst) &&
                     !gameBoard_.marbleAtPosition(posBeginFirst-movement) &&
                     !gameBoard_.marbleAtPosition(middle-movement)) {
 
                 gameBoard_.changePosition(posBeginFirst,posEndFirst);
                 gameBoard_.changePosition(middle,middle-movement);
                 gameBoard_.changePosition(posBeginLast,posBeginLast-movement);
+                std::cout <<"ici";
                 changeTurn();
                 notifyObservers();
             }
@@ -151,8 +141,8 @@ void Game::makeMove(Position posBeginFirst, Position posBeginLast, Position posE
 }
 
 void Game::cleanBoard() {
-    if (checkWon()) {
-        for (auto x = 0;x<gameBoard_.size(); x++) {
+    if(checkWon()) {
+        for(auto x = 0;x<gameBoard_.size(); x++) {
             for (auto y = 0; y < gameBoard_.size(); y++) {
                 for (auto z = 0; z < gameBoard_.size(); z++) {
                     Position posToDelete = Position(x,y,z);
@@ -164,3 +154,6 @@ void Game::cleanBoard() {
         }
     }
 }
+
+}
+                  }

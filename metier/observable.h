@@ -7,9 +7,13 @@
 /*!
  * \brief abstract Class that defines an observable class
  *
+ * \see NVS  Disclaimer: note that this class was completely implemented by Nicolas Vansteenkiste and was
+ * found on in the course material.
+ *
  * an observable class is a class that will notify his observers
- * that a change was
+ * that a change was made
  */
+
 #include <set>
 
 class Observer;
@@ -27,14 +31,12 @@ class Observable {
 public :
 
     /*!
-     * \brief Destructeur virtuel par défaut car utilisation polymorphique.
+     * \brief Default destructor
      */
     virtual ~Observable() = default;
 
     /*!
-     * \brief Constructeur par recopie par défaut.
-     *
-     * Le destructeur virtuel par défaut a des effets en cascade.
+     * \brief default copy constructor
      *
      * \see http://stackoverflow.com/q/33957037
      * \see http://scottmeyers.blogspot.de/2014/03/a-concern-about-rule-of-zero.html
@@ -43,9 +45,7 @@ public :
     Observable(const Observable &) = default;
 
     /*!
-     * \brief Constructeur par déplacement par défaut.
-     *
-     * Le destructeur virtuel par défaut a des effets en cascade.
+     * \brief default deplacement constructor
      *
      * \see http://stackoverflow.com/q/33957037
      * \see http://scottmeyers.blogspot.de/2014/03/a-concern-about-rule-of-zero.html
@@ -54,9 +54,7 @@ public :
     Observable(Observable &&) = default;
 
     /*!
-     * \brief Opérateur d'assignation par recopie par défaut.
-     *
-     * Le destructeur virtuel par défaut a des effets en cascade.
+     * \brief Default assignement operator
      *
      * \see http://stackoverflow.com/q/33957037
      * \see http://scottmeyers.blogspot.de/2014/03/a-concern-about-rule-of-zero.html
@@ -65,7 +63,7 @@ public :
     Observable & operator=(const Observable &) = default;
 
     /*!
-     * \brief Opérateur d'assignation par déplacement par défaut.
+     * \brief Default assignement operator by deplacement
      *
      * Le destructeur virtuel par défaut a des effets en cascade.
      *
@@ -76,33 +74,28 @@ public :
     Observable & operator=(Observable &&) = default;
 
     /*!
-     * \brief Méthode permettant à un observateur de s'enregistrer comme
-     * écouteur du sujet d'observation.
+     * \brief method that lets an observable register an observer that will obser that object
      *
-     * \param observer un pointeur vers le candidat observateur.
+     * \param observer a pointer to the observer candidate.
      */
     virtual void registerObserver(Observer * observer) final;
 
     /*!
-     * \brief Méthode permettant à un observateur de se retirer de la liste
-     * des écouteurs patentés du sujet d'observation.
+     * \brief method that deletes an observer of the list of observers of an observable
      *
-     * \param observer l'adresse de l'observateur désintéressé.
+     * \param observer the address of the observer to delete
      */
     virtual void unregisterObserver(Observer * observer) final;
 
 protected :
 
     /*!
-     * \brief Constructeur protégé pour éviter l'instanciation
-     *        hors héritage.
+     * \brief protected constructor to avoid construcor by heritage
      */
     Observable() = default;
 
     /*!
-     * \brief Méthode qui se charge de prévenir les observateurs d'un
-     * changement d'état du sujet d'observation, en invoquant leur
-     * méthode Observer::update().
+     * \brief this method will notify all the observers of this class that a change was made in this class
      *
      * \sa Observer::update(const Subject *).
      */
@@ -111,7 +104,7 @@ protected :
 protected :
 
     /*!
-     * \brief L'ensemble d'observateurs enregistrés.
+     * \brief the set of all observers of this class
      */
     std::set<Observer *> observers_ { };
 

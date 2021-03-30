@@ -1,7 +1,7 @@
 #include "position.h"
 #include "algorithm"
 #include <stdlib.h>
-
+namespace abalone { namespace model {
 Position::Position(int x, int y, int z) :
     x_ {x},
     y_ {y},
@@ -70,3 +70,5 @@ Position abaToPos(std::string s) {
 
     return posDepart;
 }
+}
+                  }

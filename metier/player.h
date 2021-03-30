@@ -1,6 +1,8 @@
 #ifndef PLAYER_H
 #define PLAYER_H
 
+namespace abalone { namespace model {
+
 /*!
  * \brief class that represents a player
  *
@@ -53,12 +55,13 @@ public :
 
 };
 
-int Player::nb() const {
+
+int abalone::model::Player::nb() const {
     return nb_;
 }
 
-int Player::nbMarbles() const {
+int abalone::model::Player::nbMarbles() const {
     return nbMarbles_;
 }
-
+}}
 #endif // PLAYER_H

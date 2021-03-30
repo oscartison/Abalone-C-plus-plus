@@ -5,6 +5,12 @@
 #include "observable.h"
 #include <ostream>
 
+namespace abalone { namespace view {
+class Vue;
+}
+}
+
+namespace abalone { namespace model {
 /*!
  * \brief Class that represents a the game
  *
@@ -37,6 +43,8 @@ class Game: public Observable {
     */
     Board gameBoard_;
 
+
+
 public :
 
     /*!
@@ -55,6 +63,7 @@ public :
      * \return the player whos turn it is.
      */
     inline Player * playerTurn() const;
+
 
     /*!
      * \brief getter for the player that is playing with the white marbles
@@ -108,11 +117,10 @@ public :
     void makeMove(Position posBeginFirst, Position posBeginLast, Position posEndFirst);
 
     /*!
-    * \brief checks if a move is possible from a certain position to another.
+    * \brief checks if a move is possible from a certain position to another. the only thing that is
+    * checked is wether the marble at the position is the marble of the player making the move
     *
     * \param posBegin the initial position of the marble.
-    *
-    * \param posEnd the position where the marble has to go
     *
     * \return true if the move is possible,
     * false otherwise
@@ -120,50 +128,77 @@ public :
     bool isMovePossible(Position posBegin);
 
     /*!
-    * \brief checks if a move is possible from a certain position to another.
+    * \brief checks if a move is possible from a certain position to another. the only thing that is
+    * checked is wether the marbles at the positions are marbles of the player making the move
     *
     * \param posBeginFirst the initial position of the first marble of a group.
     *
     * \param posBeginLast the initial position of the last marble of a group.
     *
-    * \param posEnd the position where the marble has to go
     *
-    * \return true if the move is possible,
-    * false otherwise
+    * \return true if the move is possible, false otherwise
     */
     bool isMovePossible(Position posBeginFirst,Position posBeginLast);
 
+    /*!
+    * \brief cleans the board at the end of the game to avoid having memory leaks.
+    */
     void cleanBoard();
 
+
+    /*!
+    * \brief gets a movement in a string and tries to perform that movement
+    *
+    * \param the movement to perform
+    *
+    */
     void stringToMovement(std::string s);
+
+private:
+    /*!
+    * \brief sets the turn to a player
+    *
+    * \param the player whos turn it will be
+    *
+    */
+    void setTurn(Player &player);
+
 
     /*!
      * \brief changes whos turn it is to play.
      */
     void changeTurn();
 
-    void setTurn(Player &player);
+    /*!
+     * \brief a getter for the gameboard
+     *
+     * \return the gameboard of this game
+     */
+    inline Board getBoard();
 
-    std::string to_string(const Game & game);
+    friend class abalone::view::Vue;
 
 };
 
-std::ostream & operator<<(std::ostream & out, const Game & game);
 
-Player * Game::playerTurn() const {
+abalone::model::Player * abalone::model::Game::playerTurn() const {
     return playerTurn_;
 }
 
-Player & Game::playerWhite() {
+abalone::model::Board abalone::model::Game::getBoard(){
+    return gameBoard_;
+}
+
+abalone::model::Player & abalone::model::Game::playerWhite() {
     return playerWhite_;
 }
 
-Player & Game::playerBlack() {
+abalone::model::Player & abalone::model::Game::playerBlack() {
     return playerBlack_;
 }
 
-std::list<Observer *> Game::list_observer() {
+std::list<Observer *> abalone::model::Game::list_observer() {
     return list_observer_;
 }
-
+}}
 #endif // GAME_H

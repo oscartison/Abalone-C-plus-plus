@@ -7,13 +7,14 @@
 class Observable;
 
 /*!
- * \brief Classe abstraite de base de tout observateur.
+ * \brief abstract class that forms the base of all observable classes
  *
- * Classe dont dérive tout écouteur (ou "observateur") du modèle de
- * conception "Observateur / SujetDObservation".
+ * \sa Observable
  *
- * \sa Subject.
  * \see https://en.wikipedia.org/wiki/Observer_pattern
+ *
+ * \see  NVS  Disclaimer: note that this class was completely implemented by Nicolas Vansteenkiste and was
+ * found on in the course material.
  */
 
 class Observer {
@@ -21,24 +22,22 @@ class Observer {
 public :
 
     /*!
-     * \brief Méthode virtuelle pure que chaque observateur concret doit
-     * implémenter : c'est cette méthode qu'appelle le sujet observé lors
-     * d'une notification.
+     * \brief virtual method that will be called when an observable notified this class that it needed
+     * to be updated
      *
-     * \param subject le sujet d'observation qui notifie un changement.
-     * \see Subject::notifyObservers().
+     * \param subject the object that notified
+     * \see Observable::notifyObservers().
      */
     virtual void update(const Observable * subject) = 0;
 
     /*!
-     * \brief Destructeur virtuel par défaut car utilisation polymorphique.
+     * \brief virtual default destructor
      */
     virtual ~Observer() = default;
 
     /*!
-     * \brief Constructeur par recopie par défaut.
+     * \brief default copy constructor
      *
-     * Le destructeur virtuel par défaut a des effets en cascade.
      *
      * \see http://stackoverflow.com/q/33957037
      * \see http://scottmeyers.blogspot.de/2014/03/a-concern-about-rule-of-zero.html
@@ -47,9 +46,7 @@ public :
     Observer(const Observer &) = default;
 
     /*!
-     * \brief Constructeur par déplacement par défaut.
-     *
-     * Le destructeur virtuel par défaut a des effets en cascade.
+     * \brief default realocation constructor
      *
      * \see http://stackoverflow.com/q/33957037
      * \see http://scottmeyers.blogspot.de/2014/03/a-concern-about-rule-of-zero.html
@@ -58,9 +55,7 @@ public :
     Observer(Observer &&) = default;
 
     /*!
-     * \brief Opérateur d'assignation par recopie par défaut.
-     *
-     * Le destructeur virtuel par défaut a des effets en cascade.
+     * \brief default copy assignement operator
      *
      * \see http://stackoverflow.com/q/33957037
      * \see http://scottmeyers.blogspot.de/2014/03/a-concern-about-rule-of-zero.html
@@ -69,9 +64,7 @@ public :
     Observer & operator=(const Observer &) = default;
 
     /*!
-     * \brief Opérateur d'assignation par déplacement par défaut.
-     *
-     * Le destructeur virtuel par défaut a des effets en cascade.
+     * \brief default reallocation assignement operator
      *
      * \see http://stackoverflow.com/q/33957037
      * \see http://scottmeyers.blogspot.de/2014/03/a-concern-about-rule-of-zero.html
@@ -82,10 +75,7 @@ public :
 protected :
 
     /*!
-     * \brief Constructeur protégé pour éviter l'instanciation
-     *        hors héritage.
-     *
-     * Le destructeur virtuel par défaut a des effets en cascade.
+     * \brief protected constructor to avoid construction besides heritage
      *
      * \see http://stackoverflow.com/q/33957037
      * \see http://scottmeyers.blogspot.de/2014/03/a-concern-about-rule-of-zero.html

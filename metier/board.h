@@ -7,6 +7,7 @@
 #include <optional>
 #include <marble.h>
 #include <iostream>
+namespace abalone { namespace model {
 
 /*!
  * \brief Class that represents a board in the game abalone.
@@ -104,17 +105,16 @@ public :
     */
     void changePosition(Position posBegin, Position posEnd);
 
-    std::string to_string(Board & board);
 
 };
 
-
-int Board::size() const {
+int abalone::model::Board::size() const {
     return size_;
 }
 
-std::array<std::array<std::array<std::optional<Marble*>,9>,9>, 9> Board::marbles() const {
+std::array<std::array<std::array<std::optional<abalone::model::Marble*>,9>,9>, 9> abalone::model::Board::marbles() const {
     return marbles_;
 }
-
+}
+                  }
 #endif // BOARD_H

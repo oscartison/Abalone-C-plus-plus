@@ -1,56 +1,55 @@
 #ifndef VUE_H
 #define VUE_H
 #include "observer.h"
+#include "game.h"
 
-class Game;
+//class Game;
+
+namespace abalone {
+namespace view{
+
 
 /*!
- * \brief Observateur console de money::Coin.
- *
- * Cette classe implémente concrètement le classe abstraite
- * nvs::Observer. Ses instances s'attachent à une et une seule
- * pièce de monnaie. Elles se contentent d'injecter leur sujet
- * d'observation, le money::Coin qu'elles observent, dans le
- * flux en sortie standard std::cout.
+ * \brief console observer of the class model::Game.
  */
-class Vue : public Observer {
+class Vue final : public Observer {
 
-    /*! \brief Le sujet observé. */
-    Game * subject_;
+    /*! \brief the observed class. */
+    model::Game * subject_;
 
 public :
 
     /*!
-     * \brief Constructeur.
+     * \brief constructor.
      *
-     * Le constructeur attache l'observateur en cours de construction
-     * à la money::Coin fournie en argument. En fin de constructon,
-     * l'observateur se met à jour.
+     * This constructor registers itself as observer of the paramater.
+     *  At the end the class is updated
      *
-     * \param observable L'adresse du game observée.
+     * \param observable the address of the observed game
      */
-    Vue(Game * observable);
+    Vue(model::Game * observable);
 
     /*!
-     * \brief Destructeur.
+     * \brief destructor.
      *
-     * Lors de le destruction de l'observateur, il doit se détacher
-     * de son sujet d'observation.
+     * when this object is deleted, it is first unregistered as observer.
      */
     virtual ~Vue();
 
     /*!
-     * \brief Mise à jour de l'observateur.
+     * \brief updates the observer by printing the gameboard and whos turn it is.
      *
-     * Si subject est bien l'adresse de la pièce de monnaie
-     * observée, l'observateur injecte celle-ci dans le flux
-     * associé à la sortie standard, sinon, il ne se passe rien.
-     *
-     * \param subject Le nvs::Subject qui notifie un changement
-     *                d'état.
+     * \param subject the game that notified a change was made
      */
     virtual void update(const Observable * subject) override;
 
+    void printGame();
+
+    void printWin();
+
 };
+
+}
+}
 
 #endif // VUE_H

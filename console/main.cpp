@@ -6,10 +6,10 @@
 
 int main() {
 
-    Game game = Game();
-    Vue vue = Vue(&game);
+    abalone::model::Game game = abalone::model::Game();
+    abalone::view::Vue vue = abalone::view::Vue(&game);
 
-    while (!game.checkWon()) {
+    while(!game.checkWon()) {
         bool readSuccess { false };
         while (!readSuccess) {
             std::cout << "Please enter a movement in ABA-Pro : ";

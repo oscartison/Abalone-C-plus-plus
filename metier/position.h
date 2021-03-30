@@ -3,6 +3,9 @@
 
 #include <iostream>
 
+namespace abalone {
+namespace model {
+
 /*!
  * \brief class that represents a position to a system with 3 axis
  *
@@ -94,6 +97,7 @@ public :
 
 };
 
+
 /*!
  * \brief the - operator for 2 positions.
  *
@@ -103,7 +107,7 @@ public :
  *
  * \return the substraction of the 2 positions.
  */
-Position operator-(const Position p1, const Position p2);
+abalone::model::Position operator-(const abalone::model::Position p1, const abalone::model::Position p2);
 
 /*!
  * \brief the + operator for 2 positions
@@ -114,20 +118,22 @@ Position operator-(const Position p1, const Position p2);
  *
  * \return the sum of the 2 positions
  */
-Position operator+(const Position p1, const Position p2);
+abalone::model::Position operator+(const abalone::model::Position p1, const abalone::model::Position p2);
 
-Position abaToPos(std::string s);
 
-int Position::x() const {
+abalone::model::Position abaToPos(std::string s);
+
+int abalone::model::Position::x() const {
     return x_;
 }
 
-int Position::y() const {
+int abalone::model::Position::y() const {
     return y_;
 }
 
-int Position::z() const {
+int abalone::model::Position::z() const {
     return z_;
 }
-
+}
+}
 #endif // POSITION_H

@@ -1,10 +1,8 @@
 #ifndef POSITION_H
 #define POSITION_H
-
 #include <iostream>
 
-namespace abalone {
-namespace model {
+namespace abalone { namespace model {
 
 /*!
  * \brief class that represents a position to a system with 3 axis
@@ -14,34 +12,34 @@ namespace model {
 class Position {
 
     /*!
-    * \brief the position on the x axis.
-    */
+     * \brief the position on the x axis.
+     */
     int x_;
 
     /*!
-    * \brief the position on the y axis.
-    */
+     * \brief the position on the y axis.
+     */
     int y_;
 
     /*!
-    * \brief the position on the z axis.
-    */
+     * \brief the position on the z axis.
+     */
     int z_;
 
 public :
 
     /*!
-    * \brief Constructor.
-    *
-    * the position is created with 2 values.
-    *
-    * \param x the x-position.
-    *
-    * \param y the y-position.
-    *
-    * \param z the y-position.
-    *
-    */
+     * \brief Constructor.
+     *
+     * the position is created with 2 values.
+     *
+     * \param x the x-position.
+     *
+     * \param y the y-position.
+     *
+     * \param z the y-position.
+     *
+     */
     Position(int x, int y, int z);
 
     /*!
@@ -76,17 +74,6 @@ public :
     bool isPossiblePos(int size);
 
     /*!
-     * \brief moves the position a of dx and dy.
-     *
-     * \param dx how much to move on the x-axis.
-     *
-     * \param dy how much to move on the y-axis.
-     *
-     * \param dy how much to move on the y-axis.
-     */
-    void move(int dx, int dy, int dz);
-
-    /*!
      * \brief computes the distance between two positions.
      *
      * \param po2 the second position.
@@ -96,7 +83,6 @@ public :
     int distance(Position po2);
 
 };
-
 
 /*!
  * \brief the - operator for 2 positions.
@@ -120,7 +106,15 @@ abalone::model::Position operator-(const abalone::model::Position p1, const abal
  */
 abalone::model::Position operator+(const abalone::model::Position p1, const abalone::model::Position p2);
 
-
+/*!
+ * \brief abaToPos this method will take 2 chars in a
+ *  string in aba pro and makes a position out of it
+ * \param s the string to convert in a position
+ * \return the position
+ *
+ * \throw an exception is thrown if the given string is not
+ *  in aba-pro
+ */
 abalone::model::Position abaToPos(std::string s);
 
 int abalone::model::Position::x() const {
@@ -134,6 +128,7 @@ int abalone::model::Position::y() const {
 int abalone::model::Position::z() const {
     return z_;
 }
-}
-}
+
+}}
+
 #endif // POSITION_H

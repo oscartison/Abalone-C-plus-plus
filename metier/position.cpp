@@ -1,7 +1,9 @@
 #include "position.h"
 #include "algorithm"
 #include <stdlib.h>
+
 namespace abalone { namespace model {
+
 Position::Position(int x, int y, int z) :
     x_ {x},
     y_ {y},
@@ -13,12 +15,6 @@ bool Position::isPossiblePos(int size) {
     int sum = (size/2)*3;
     bool possible = x_ + y_ + z_ == sum;
     return inside && possible;
-}
-
-void Position::move(int dx, int dy, int dz) {
-    x_ += dx;
-    y_ += dy;
-    z_ += dz;
 }
 
 int Position::distance(Position po2) {
@@ -70,5 +66,5 @@ Position abaToPos(std::string s) {
 
     return posDepart;
 }
-}
-                  }
+
+}}

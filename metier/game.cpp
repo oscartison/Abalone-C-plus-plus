@@ -3,6 +3,7 @@
 #include <list>
 #include <stdexcept>
 namespace abalone { namespace model {
+
 Game::Game():
     list_observer_ {},
     playerWhite_ {Player(1)},
@@ -37,7 +38,6 @@ void Game::stringToMovement(std::string s) {
         Position pos2 = abaToPos(s.substr(2,2));
         Position pos3 = abaToPos(s.substr(4,2));
         makeMove(pos1,pos2,pos3);
-        //}
     }
 }
 
@@ -51,7 +51,6 @@ bool Game::isMovePossible(Position posBegin) {
 }
 
 bool Game::isMovePossible(Position posBeginFirst, Position posBeginLast) {
-
     if(gameBoard_.playerAtPosition(posBeginFirst) &&
             gameBoard_.playerAtPosition(posBeginFirst)->nb() == playerTurn()->nb() &&
             gameBoard_.playerAtPosition(posBeginLast) &&
@@ -155,5 +154,4 @@ void Game::cleanBoard() {
     }
 }
 
-}
-                  }
+}}

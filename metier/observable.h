@@ -1,11 +1,7 @@
 #ifndef OBSERVABLE_H
 #define OBSERVABLE_H
-
 #include <vector>
 #include "observer.h"
-
-
-
 #include <set>
 
 class Observer;
@@ -45,26 +41,6 @@ public :
      * \see https://blog.feabhas.com/2015/11/becoming-a-rule-of-zero-hero/
      */
     Observable(Observable &&) = default;
-
-    /*!
-     * \brief Default assignement operator
-     *
-     * \see http://stackoverflow.com/q/33957037
-     * \see http://scottmeyers.blogspot.de/2014/03/a-concern-about-rule-of-zero.html
-     * \see https://blog.feabhas.com/2015/11/becoming-a-rule-of-zero-hero/
-     */
-    Observable & operator=(const Observable &) = default;
-
-    /*!
-     * \brief Default assignement operator by deplacement
-     *
-     * Le destructeur virtuel par défaut a des effets en cascade.
-     *
-     * \see http://stackoverflow.com/q/33957037
-     * \see http://scottmeyers.blogspot.de/2014/03/a-concern-about-rule-of-zero.html
-     * \see https://blog.feabhas.com/2015/11/becoming-a-rule-of-zero-hero/
-     */
-    Observable & operator=(Observable &&) = default;
 
     /*!
      * \brief method that lets an observable register an observer that will obser that object

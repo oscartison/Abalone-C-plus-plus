@@ -1,29 +1,29 @@
-#include "vue.h"
+#include "view.h"
 #include "game.h"
 #include <iostream>
-namespace abalone {
-namespace view {
 
-Vue::Vue(model::Game * subject) :
+namespace abalone { namespace view {
+
+View::View(model::Game * subject) :
     subject_ {subject}
 {
     subject_->registerObserver(this);
     update(subject_);
 }
 
-Vue::~Vue() {
-    subject_->unregisterObserver(this);   // essayer sans...
+View::~View() {
+    subject_->unregisterObserver(this);
 }
 
-void Vue::printWin() {
-    if(subject_->playerBlack().nbMarbles() == 8) {
+void View::printWin() {
+    if (subject_->playerBlack().nbMarbles() == 8) {
         std::cout << "Player o won!!" << std::endl;
-    } else  if(subject_->playerWhite().nbMarbles() == 8){
+    } else  if (subject_->playerWhite().nbMarbles() == 8){
         std::cout << "Player x won!!" << std::endl;
     }
 }
 
-void Vue::printGame(){
+void View::printGame(){
     std::string output = "";
     std::cout << "         __________\n";
     for (auto z = 0; z < subject_->getBoard().size(); z++) {
@@ -86,10 +86,7 @@ void Vue::printGame(){
     std::cout << "         -\\-\\-\\-\\-\\  6 \n           1 2 3 4 5" << std::endl;
 }
 
-
-void printWin();
-
-void Vue::update(const Observable * subject) {
+void View::update(const Observable * subject) {
     if (subject != subject_) return;
     std::string str = "Player turn: ";
     std::string str2 = (subject_->playerTurn()->nb() == 1) ? "o" : "x";
@@ -97,5 +94,5 @@ void Vue::update(const Observable * subject) {
     printGame();
     printWin();
 }
-}
-}
+
+}}

@@ -1,5 +1,6 @@
 #include "board.h"
 #include <array>
+
 namespace abalone { namespace model {
 
 Board::Board(Player & playerBlack, Player &playerWhite) :
@@ -25,7 +26,7 @@ Board::Board(Player & playerBlack, Player &playerWhite) :
     }
 }
 
-Marble* Board::marbleAtPosition(Position pos)  {
+Marble * Board::marbleAtPosition(Position pos)  {
     if (isPosPossible(pos)) {
         return (marbles_[pos.x()][pos.y()][pos.z()]) ? *marbles_[pos.x()][pos.y()][pos.z()]: NULL;
     } else {
@@ -60,6 +61,4 @@ void Board::changePosition(Position posBegin, Position posEnd) {
     }
 }
 
-
-}
-                  }
+}}

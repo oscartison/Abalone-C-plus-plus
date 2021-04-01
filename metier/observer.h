@@ -1,6 +1,5 @@
 #ifndef OBSERVER_H
 #define OBSERVER_H
-
 #include <string>
 #include "observable.h"
 
@@ -44,33 +43,6 @@ public :
      * \see https://blog.feabhas.com/2015/11/becoming-a-rule-of-zero-hero/
      */
     Observer(const Observer &) = default;
-
-    /*!
-     * \brief default realocation constructor
-     *
-     * \see http://stackoverflow.com/q/33957037
-     * \see http://scottmeyers.blogspot.de/2014/03/a-concern-about-rule-of-zero.html
-     * \see https://blog.feabhas.com/2015/11/becoming-a-rule-of-zero-hero/
-     */
-    Observer(Observer &&) = default;
-
-    /*!
-     * \brief default copy assignement operator
-     *
-     * \see http://stackoverflow.com/q/33957037
-     * \see http://scottmeyers.blogspot.de/2014/03/a-concern-about-rule-of-zero.html
-     * \see https://blog.feabhas.com/2015/11/becoming-a-rule-of-zero-hero/
-     */
-    Observer & operator=(const Observer &) = default;
-
-    /*!
-     * \brief default reallocation assignement operator
-     *
-     * \see http://stackoverflow.com/q/33957037
-     * \see http://scottmeyers.blogspot.de/2014/03/a-concern-about-rule-of-zero.html
-     * \see https://blog.feabhas.com/2015/11/becoming-a-rule-of-zero-hero/
-     */
-    Observer & operator=(Observer &&) = default;
 
 protected :
 

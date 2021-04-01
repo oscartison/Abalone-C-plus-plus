@@ -12,7 +12,7 @@ LIBS += -L../lib -llibmetier \
 
 SOURCES += \
     main.cpp \
-    vue.cpp
+    view.cpp
 
 HEADERS += \
-    vue.h
+    view.h

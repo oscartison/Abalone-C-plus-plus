@@ -7,7 +7,10 @@ LIBS += -L../lib -llibmetier \
 
 SOURCES += main.cpp \
     testboard.cpp \
-    testgame.cpp
+    testgame.cpp \
+    testmarble.cpp \
+    testplayer.cpp \
+    testposition.cpp
 
 HEADERS += \
     catch.hpp \

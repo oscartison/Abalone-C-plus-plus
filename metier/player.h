@@ -11,27 +11,27 @@ namespace abalone { namespace model {
 class Player {
 
     /*!
-    * \brief the number of the player
-    */
+     * \brief the number of the player
+     */
     const int nb_;
 
     /*!
-    * \brief the amount of marbles the player has left.
-    */
+     * \brief the amount of marbles the player has left.
+     */
     int nbMarbles_;
 
 public :
 
     /*!
-    * \brief Constructor.
-    *
-    * constructs a player with a number between 1 and 2.
-    * every player constructed starts with 14 marbles.
-    *
-    * \param the number of the player
-    *
-    * \throw std::invalid_argument if the nb is not 1 or 2.
-    */
+     * \brief Constructor.
+     *
+     * constructs a player with a number between 1 and 2.
+     * every player constructed starts with 14 marbles.
+     *
+     * \param the number of the player
+     *
+     * \throw std::invalid_argument if the nb is not 1 or 2.
+     */
     Player(int nb);
 
     /*!
@@ -55,7 +55,6 @@ public :
 
 };
 
-
 int abalone::model::Player::nb() const {
     return nb_;
 }
@@ -63,5 +62,7 @@ int abalone::model::Player::nb() const {
 int abalone::model::Player::nbMarbles() const {
     return nbMarbles_;
 }
+
 }}
+
 #endif // PLAYER_H

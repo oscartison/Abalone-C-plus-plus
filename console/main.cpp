@@ -1,13 +1,13 @@
 #include <iostream>
 #include "game.h"
 #include "observable.h"
-#include "vue.h"
+#include "view.h"
 #include <stdexcept>
 
 int main() {
 
     abalone::model::Game game = abalone::model::Game();
-    abalone::view::Vue vue = abalone::view::Vue(&game);
+    abalone::view::View view = abalone::view::View(&game);
 
     while(!game.checkWon()) {
         bool readSuccess { false };
@@ -25,4 +25,5 @@ int main() {
         }
     }
     game.cleanBoard();
+
 }

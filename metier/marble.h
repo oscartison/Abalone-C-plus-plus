@@ -41,10 +41,10 @@ public :
 
 };
 
-
-
 abalone::model::Player * abalone::model::Marble::player() {
     return player_;
 }
+
 }}
+
 #endif // MARBLE_H

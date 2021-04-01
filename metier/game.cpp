@@ -2,6 +2,7 @@
 #include "board.h"
 #include <list>
 #include <stdexcept>
+
 namespace abalone { namespace model {
 
 Game::Game():
@@ -42,7 +43,7 @@ void Game::stringToMovement(std::string s) {
 }
 
 bool Game::isMovePossible(Position posBegin) {
-    if(gameBoard_.playerAtPosition(posBegin) &&
+    if (gameBoard_.playerAtPosition(posBegin) &&
             gameBoard_.playerAtPosition(posBegin)->nb() == playerTurn()->nb()) {
         return true;
     } else {
@@ -51,11 +52,11 @@ bool Game::isMovePossible(Position posBegin) {
 }
 
 bool Game::isMovePossible(Position posBeginFirst, Position posBeginLast) {
-    if(gameBoard_.playerAtPosition(posBeginFirst) &&
+    if (gameBoard_.playerAtPosition(posBeginFirst) &&
             gameBoard_.playerAtPosition(posBeginFirst)->nb() == playerTurn()->nb() &&
             gameBoard_.playerAtPosition(posBeginLast) &&
             gameBoard_.playerAtPosition(posBeginLast)->nb() == playerTurn()->nb()) {
-        if(posBeginFirst.distance(posBeginLast) == 2) {
+        if (posBeginFirst.distance(posBeginLast) == 2) {
             Position middle = Position((posBeginFirst.x()+posBeginLast.x()) / 2,
                                        (posBeginFirst.y()+posBeginLast.y()) / 2,
                                        (posBeginFirst.z()+posBeginLast.z()) / 2);
@@ -93,7 +94,7 @@ void Game::makeMove(Position posBegin, Position posEnd) {
             nextPos = nextPos + direction;
         }
 
-        if (i<3 &&j==0) {
+        if (i<3 && j==0) {
             gameBoard_.changePosition(posBegin,nextPos);
             changeTurn();
             notifyObservers();
@@ -107,29 +108,26 @@ void Game::makeMove(Position posBegin, Position posEnd) {
 }
 
 void Game::makeMove(Position posBeginFirst, Position posBeginLast, Position posEndFirst) {
-    if(isMovePossible(posBeginFirst,posBeginLast)) {
-        Position movement = posBeginFirst - posEndFirst ;
-        if(posBeginFirst.distance(posBeginLast) == 1) {
-            if(!gameBoard_.marbleAtPosition(posEndFirst) &&
+    if (isMovePossible(posBeginFirst,posBeginLast)) {
+        Position movement = posBeginFirst - posEndFirst;
+        if (posBeginFirst.distance(posBeginLast) == 1) {
+            if (!gameBoard_.marbleAtPosition(posEndFirst) &&
                     !gameBoard_.marbleAtPosition(posBeginLast-movement)) {
                 gameBoard_.changePosition(posBeginFirst,posEndFirst);
                 gameBoard_.changePosition(posBeginLast,posBeginLast-movement);
-                std::cout <<"ici";
                 changeTurn();
                 notifyObservers();
             }
-        } else if(posBeginFirst.distance(posBeginLast) == 2) {
+        } else if (posBeginFirst.distance(posBeginLast) == 2) {
             Position middle = Position((posBeginFirst.x()+posBeginLast.x()) / 2,
                                        (posBeginFirst.y()+posBeginLast.y()) / 2,
                                        (posBeginFirst.z()+posBeginLast.z()) / 2);
-            if(!gameBoard_.marbleAtPosition(posEndFirst) &&
+            if (!gameBoard_.marbleAtPosition(posEndFirst) &&
                     !gameBoard_.marbleAtPosition(posBeginFirst-movement) &&
                     !gameBoard_.marbleAtPosition(middle-movement)) {
-
                 gameBoard_.changePosition(posBeginFirst,posEndFirst);
                 gameBoard_.changePosition(middle,middle-movement);
                 gameBoard_.changePosition(posBeginLast,posBeginLast-movement);
-                std::cout <<"ici";
                 changeTurn();
                 notifyObservers();
             }
@@ -140,8 +138,8 @@ void Game::makeMove(Position posBeginFirst, Position posBeginLast, Position posE
 }
 
 void Game::cleanBoard() {
-    if(checkWon()) {
-        for(auto x = 0;x<gameBoard_.size(); x++) {
+    if (checkWon()) {
+        for (auto x = 0; x<gameBoard_.size(); x++) {
             for (auto y = 0; y < gameBoard_.size(); y++) {
                 for (auto z = 0; z < gameBoard_.size(); z++) {
                     Position posToDelete = Position(x,y,z);

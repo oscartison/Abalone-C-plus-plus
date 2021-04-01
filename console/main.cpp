@@ -9,7 +9,7 @@ int main() {
     abalone::model::Game game = abalone::model::Game();
     abalone::view::View view = abalone::view::View(&game);
 
-    while(!game.checkWon()) {
+    while (!game.checkWon()) {
         bool readSuccess { false };
         while (!readSuccess) {
             std::cout << "Please enter a movement in ABA-Pro : ";

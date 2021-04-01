@@ -24,7 +24,7 @@ public :
     /*!
     * \brief Constructor.
     *
-    * a marble is created with a player, it determines
+    * A marble is created with a player, it determines.
     *
     * \param player the player whos marble it is.
     *
@@ -33,9 +33,9 @@ public :
     Marble(Player & play);
 
     /*!
-     * \brief getter for the player of the marble
+     * \brief getter for the player of the marble.
      *
-     * \return the player of the marble
+     * \return the player of the marble.
      */
     inline Player * player();
 

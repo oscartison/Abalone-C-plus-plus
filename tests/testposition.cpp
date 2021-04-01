@@ -1,11 +1,11 @@
 #include<position.h>
 #include<catch.hpp>
 
-namespace abalone {
-namespace test {
+namespace abalone { namespace test {
 
 
 TEST_CASE("Test on position") {
+
     abalone::model::Position p1 = abalone::model::Position(4,4,4);
     abalone::model::Position p2 = abalone::model::Position(4,6,4);
 
@@ -38,18 +38,18 @@ TEST_CASE("Test on position") {
         REQUIRE(pResult.z()== 7);
     }
 
-    SECTION("Test abbaToPos") {
+    SECTION("Test abaToPos") {
         abalone::model::Position pResult = abalone::model::abaToPos("A5");
         REQUIRE(pResult.x()== 4);
         REQUIRE(pResult.y()== 0);
         REQUIRE(pResult.z()== 8);
     }
 
-    SECTION("Test abbaToPos not possible") {
+    SECTION("Test abaToPos not possible") {
         REQUIRE_THROWS(abalone::model::abaToPos("X5"));
          REQUIRE_THROWS(abalone::model::abaToPos("A9"));
     }
 
 }
-}
-}
+
+}}

@@ -1,8 +1,8 @@
 #include<game.h>
 #include<catch.hpp>
 
-
 TEST_CASE("Test some moves on the board") {
+
     abalone::model::Player p1 = abalone::model::Player(1);
     abalone::model::Player p2 = abalone::model::Player(2);
     abalone::model::Board board = abalone::model::Board(p1,p2);
@@ -51,4 +51,5 @@ TEST_CASE("Test some moves on the board") {
        board.deleteAtPos(abalone::model::Position(3,3,6));
        REQUIRE_FALSE(board.marbleAtPosition(abalone::model::Position(3,3,6)));
     }
+
 }

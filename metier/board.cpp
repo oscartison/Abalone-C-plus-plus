@@ -26,7 +26,7 @@ Board::Board(Player & playerBlack, Player &playerWhite) :
     }
 }
 
-Marble * Board::marbleAtPosition(Position pos)  {
+Marble * Board::marbleAtPosition(Position pos) {
     if (isPosPossible(pos)) {
         return (marbles_[pos.x()][pos.y()][pos.z()]) ? *marbles_[pos.x()][pos.y()][pos.z()]: NULL;
     } else {
@@ -34,7 +34,7 @@ Marble * Board::marbleAtPosition(Position pos)  {
     }
 }
 
-Player * Board::playerAtPosition(Position pos)  {
+Player * Board::playerAtPosition(Position pos) {
     if (marbleAtPosition(pos)) {
         return marbleAtPosition(pos)->player();
     } else {

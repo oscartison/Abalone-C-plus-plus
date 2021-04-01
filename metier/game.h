@@ -5,35 +5,34 @@
 #include "observable.h"
 #include <ostream>
 
-namespace abalone { namespace view {
-class View; }}
+namespace abalone { namespace view { class View; }}
 
 namespace abalone { namespace model {
 
 /*!
- * \brief Class that represents a the game
+ * \brief Class that represents the game.
  *
- * this class is the current state of the game.
+ * This class is the current state of the game.
  */
 class Game: public Observable {
 
     /*!
-     * \brief  list with all the observers of this observable
+     * \brief list with all the observers of this observable.
      */
     std::list<Observer *> list_observer_;
 
     /*!
-     * \brief The player with the white marbles
+     * \brief The player with the white marbles.
      */
     Player playerWhite_;
 
     /*!
-     * \brief The player with the black marbles
+     * \brief The player with the black marbles.
      */
     Player playerBlack_;
 
     /*!
-     * \brief The player that is playing for the moment
+     * \brief The player that is playing for the moment.
      */
     Player * playerTurn_;
 
@@ -45,8 +44,7 @@ class Game: public Observable {
 public :
 
     /*!
-     * \brief Destructeur virtuel par défaut car utilisation
-     *        polymorphique.
+     * \brief Default destructor.
      */
     virtual ~Game() = default;
 
@@ -55,23 +53,23 @@ public :
     inline std::list<Observer *> list_observer();
 
     /*!
-     * \brief getter for the player whos turn it is
+     * \brief getter for the player whos turn it is.
      *
      * \return the player whos turn it is.
      */
     inline Player * playerTurn() const;
 
     /*!
-     * \brief getter for the player that is playing with the white marbles
+     * \brief getter for the player that is playing with the white marbles.
      *
-     * \return the player that is playing with the white marbles
+     * \return the player that is playing with the white marbles.
      */
     inline Player & playerWhite();
 
     /*!
-     * \brief getter for the player that is playing with the black marbles
+     * \brief getter for the player that is playing with the black marbles.
      *
-     * \return the player that is playing with the black marbles
+     * \return the player that is playing with the black marbles.
      */
     inline Player & playerBlack();
 
@@ -80,7 +78,7 @@ public :
      *
      * \return true if a player won, false otherwise.
      *
-     * a player won if the other has lost 6 marbles.
+     * A player won if the other has lost 6 marbles.
      */
     bool checkWon() ;
 
@@ -94,10 +92,10 @@ public :
      *
      * \param posBeginLast the initial position of the last marble of a group.
      *
-     * \param posEnd the position where the first marble has to go
+     * \param posEnd the position where the first marble has to go.
      *
      * \throw an exception will be thrown if the movement that the player tries to
-     *  make is not possible
+     *  make is not possible.
      */
     void makeMove(Position posBegin, Position posEnd);
 
@@ -111,37 +109,37 @@ public :
      *
      * \param posBeginLast the initial position of the last marble of a group.
      *
-     * \param posEnd the position where the first marble has to go
+     * \param posEnd the position where the first marble has to go.
      *
      * \throw an exception will be thrown if the movement that the player tries to
-     *  make is not possible
+     *  make is not possible.
      */
     void makeMove(Position posBeginFirst, Position posBeginLast, Position posEndFirst);
 
     /*!
-     * \brief checks if a move is possible from a certain position to another. the only thing that is
-     * checked is wether the marble at the position is the marble of the player making the move
+     * \brief checks if a move is possible from a certain position to another. The only thing that is
+     * checked is wether the marble at the position is the marble of the player making the move.
      *
      * \param posBegin the initial position of the marble.
      *
-     * \return true if the move is possible
+     * \return true if the move is possible.
      *
-     * \throw if the move is not possible an exception will be thrown
+     * \throw if the move is not possible an exception will be thrown.
      */
     bool isMovePossible(Position posBegin);
 
     /*!
-     * \brief checks if a move is possible from a certain position to another. the only thing that is
-     * checked is wether the marbles at the positions are marbles of the player making the move
+     * \brief checks if a move is possible from a certain position to another. The only thing that is
+     * checked is wether the marbles at the positions are marbles of the player making the move.
      *
      * \param posBeginFirst the initial position of the first marble of a group.
      *
      * \param posBeginLast the initial position of the last marble of a group.
      *
      *
-     * \return true if the move is possible, false otherwise
+     * \return true if the move is possible, false otherwise.
      *
-     * \throw if the move is not possible an exception will be thrown
+     * \throw if the move is not possible an exception will be thrown.
      */
     bool isMovePossible(Position posBeginFirst,Position posBeginLast);
 
@@ -151,9 +149,9 @@ public :
     void cleanBoard();
 
     /*!
-     * \brief gets a movement in a string and tries to perform that movement
+     * \brief gets a movement in a string and tries to perform that movement.
      *
-     * \param the movement to perform
+     * \param the movement to perform.
      *
      */
     void stringToMovement(std::string s);
@@ -161,9 +159,9 @@ public :
 private :
 
     /*!
-     * \brief sets the turn to a player
+     * \brief sets the turn to a player.
      *
-     * \param the player whos turn it will be
+     * \param the player whos turn it will be.
      *
      */
     void setTurn(Player &player);
@@ -178,9 +176,9 @@ private :
 protected :
 
     /*!
-     * \brief a getter for the gameboard
+     * \brief a getter for the gameboard.
      *
-     * \return the gameboard of this game
+     * \return the gameboard of this game.
      */
     inline Board getBoard();
 

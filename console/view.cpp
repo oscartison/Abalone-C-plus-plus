@@ -18,7 +18,7 @@ View::~View() {
 void View::printWin() {
     if (subject_->playerBlack().nbMarbles() == 8) {
         std::cout << "Player o won!!" << std::endl;
-    } else  if (subject_->playerWhite().nbMarbles() == 8){
+    } else if (subject_->playerWhite().nbMarbles() == 8) {
         std::cout << "Player x won!!" << std::endl;
     }
 }
@@ -53,28 +53,28 @@ void View::printGame(){
                     }
 
                     if (subject_->getBoard().playerAtPosition(pos)) {
-                        std::cout << ( (subject_->getBoard().playerAtPosition(pos)->nb() == 1) ? "o ":"x ");
+                        std::cout << ((subject_->getBoard().playerAtPosition(pos)->nb() == 1) ? "o ":"x ");
                     } else {
                         std::cout <<  ". ";
                     }
 
-                    if ((x == 8 || y == 0) && z < 4){
+                    if ((x == 8 || y == 0) && z < 4) {
                         std::cout <<  "\\ \n";
-                    } else if (x == 8 || y == 0){
+                    } else if (x == 8 || y == 0) {
                         switch (z) {
-                        case 5:
+                        case 5 :
                             std::cout <<  "/\\ \n";
                             break;
-                        case 6:
+                        case 6 :
                             std::cout <<  "/\\ 9 \n";
                             break;
-                        case 7:
+                        case 7 :
                             std::cout <<  "/\\ 8 \n";
                             break;
-                        case 8:
+                        case 8 :
                             std::cout <<  "/\\ 7 \n";
                             break;
-                        default:
+                        default :
                             std::cout <<  ">\n";
                         }
                     }

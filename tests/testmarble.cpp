@@ -1,11 +1,10 @@
 #include<catch.hpp>
 #include<marble.h>
 
-namespace abalone {
-namespace test {
-
+namespace abalone { namespace test {
 
 TEST_CASE("Test on a marble") {
+
     abalone::model::Player p = abalone::model::Player(1);
     abalone::model::Marble m = abalone::model::Marble(p);
 
@@ -13,8 +12,6 @@ TEST_CASE("Test on a marble") {
         REQUIRE(m.player()->nb() == p.nb());
     }
 
-
-}
 }
 
-}
+}}

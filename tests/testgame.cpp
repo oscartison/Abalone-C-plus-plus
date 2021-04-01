@@ -5,6 +5,7 @@
 namespace abalone { namespace test {
 
 TEST_CASE("Test on the game") {
+
     abalone::test::TestGame g = abalone::test::TestGame();
 
     SECTION("Movement of a non-existent marble at position (0, 0, 0)") {
@@ -30,6 +31,7 @@ TEST_CASE("Test on the game") {
         g.stringToMovement("I9H9");
         REQUIRE(g.getBoard().marbleAtPosition(abalone::model::Position(8,3,1))->player()->nb() == 1);
         REQUIRE(g.getBoard().marbleAtPosition(abalone::model::Position(8,2,2))->player()->nb() == 1);
+        REQUIRE_FALSE(g.getBoard().marbleAtPosition(abalone::model::Position(8,4,0)));
     }
 
     SECTION("Test stringToMovement with not ABA-Pro") {
@@ -39,13 +41,14 @@ TEST_CASE("Test on the game") {
     SECTION("Simple movement of 1 marble") {
         g.makeMove(abalone::model::Position(8,3,1),abalone::model::Position(7,3,2));
         REQUIRE(g.getBoard().marbleAtPosition(abalone::model::Position(7,3,2))->player()->nb() == 1);
-        REQUIRE_FALSE(g.getBoard().marbleAtPosition(abalone::model::Position(8,3,1))->player()->nb() == 1);
+        REQUIRE_FALSE(g.getBoard().marbleAtPosition(abalone::model::Position(8,3,1)));
     }
 
     SECTION("Simple movement of 2 marbles") {
         g.makeMove(abalone::model::Position(8,4,0),abalone::model::Position(8,3,1));
         REQUIRE(g.getBoard().marbleAtPosition(abalone::model::Position(8,3,1))->player()->nb() == 1);
         REQUIRE(g.getBoard().marbleAtPosition(abalone::model::Position(8,2,2))->player()->nb() == 1);
+        REQUIRE_FALSE(g.getBoard().marbleAtPosition(abalone::model::Position(8,4,0)));
     }
 
     SECTION("Simple movement of 3 marbles") {
@@ -53,6 +56,7 @@ TEST_CASE("Test on the game") {
         REQUIRE(g.getBoard().marbleAtPosition(abalone::model::Position(4,7,1))->player()->nb() == 1);
         REQUIRE(g.getBoard().marbleAtPosition(abalone::model::Position(4,6,2))->player()->nb() == 1);
         REQUIRE(g.getBoard().marbleAtPosition(abalone::model::Position(4,5,3))->player()->nb() == 1);
+        REQUIRE_FALSE(g.getBoard().marbleAtPosition(abalone::model::Position(4,8,0)));
     }
 
     SECTION("Impossible movement of 4 marbles") {
@@ -128,6 +132,8 @@ TEST_CASE("Test on the game") {
         g.stringToMovement("G5G6F4");
         REQUIRE(g.getBoard().marbleAtPosition(abalone::model::Position(3,6,3))->player()->nb() == 1);
         REQUIRE(g.getBoard().marbleAtPosition(abalone::model::Position(4,5,3))->player()->nb() == 1);
+        REQUIRE_FALSE(g.getBoard().marbleAtPosition(abalone::model::Position(4,6,2)));
+        REQUIRE_FALSE(g.getBoard().marbleAtPosition(abalone::model::Position(5,5,2)));
     }
 
     SECTION("Test stringToMovement with movement of a horizontal line of 3 marbles") {
@@ -135,6 +141,9 @@ TEST_CASE("Test on the game") {
         REQUIRE(g.getBoard().marbleAtPosition(abalone::model::Position(4,5,3))->player()->nb() == 1);
         REQUIRE(g.getBoard().marbleAtPosition(abalone::model::Position(5,4,3))->player()->nb() == 1);
         REQUIRE(g.getBoard().marbleAtPosition(abalone::model::Position(6,3,3))->player()->nb() == 1);
+        REQUIRE_FALSE(g.getBoard().marbleAtPosition(abalone::model::Position(4,6,2)));
+        REQUIRE_FALSE(g.getBoard().marbleAtPosition(abalone::model::Position(5,5,2)));
+        REQUIRE_FALSE(g.getBoard().marbleAtPosition(abalone::model::Position(6,4,2)));
     }
 
     SECTION("Test stringToMovement with impossible movement of a horizontal line of 4 marbles") {
@@ -146,6 +155,8 @@ TEST_CASE("Test on the game") {
         g.makeMove(abalone::model::Position(4,6,2),abalone::model::Position(5,5,2),abalone::model::Position(4,5,3));
         REQUIRE(g.getBoard().marbleAtPosition(abalone::model::Position(4,5,3))->player()->nb() == 1);
         REQUIRE(g.getBoard().marbleAtPosition(abalone::model::Position(5,4,3))->player()->nb() == 1);
+        REQUIRE_FALSE(g.getBoard().marbleAtPosition(abalone::model::Position(4,6,2)));
+        REQUIRE_FALSE(g.getBoard().marbleAtPosition(abalone::model::Position(5,5,2)));
     }
 
     SECTION("Movement of a horizontal line of 3 marbles") {
@@ -153,6 +164,9 @@ TEST_CASE("Test on the game") {
         REQUIRE(g.getBoard().marbleAtPosition(abalone::model::Position(3,6,3))->player()->nb() == 1);
         REQUIRE(g.getBoard().marbleAtPosition(abalone::model::Position(4,5,3))->player()->nb() == 1);
         REQUIRE(g.getBoard().marbleAtPosition(abalone::model::Position(5,4,3))->player()->nb() == 1);
+        REQUIRE_FALSE(g.getBoard().marbleAtPosition(abalone::model::Position(4,6,2)));
+        REQUIRE_FALSE(g.getBoard().marbleAtPosition(abalone::model::Position(5,5,2)));
+        REQUIRE_FALSE(g.getBoard().marbleAtPosition(abalone::model::Position(6,4,2)));
     }
 
     SECTION("Impossible movement of a horizontal line of 4 marbles") {
@@ -239,5 +253,6 @@ TEST_CASE("Test on the game") {
         REQUIRE(marbleAtPosition);
     }
 
-}}}
+}
 
+}}

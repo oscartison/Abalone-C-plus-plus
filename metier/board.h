@@ -67,7 +67,7 @@ public :
      * \return the marble at this position,
      * if there is no marble it returns null
      */
-    Marble* marbleAtPosition(Position pos);
+    Marble * marbleAtPosition(Position pos);
 
     /*!
      * \brief checks if a position is possible

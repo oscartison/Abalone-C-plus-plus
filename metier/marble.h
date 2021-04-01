@@ -26,7 +26,7 @@ public :
     *
     * A marble is created with a player, it determines.
     *
-    * \param player the player whos marble it is.
+    * \param play the player whos marble it is.
     *
     * \throw std::invalid_argument if player is null.
     */

@@ -48,8 +48,15 @@ public :
      */
     virtual ~Game() = default;
 
+    /*!
+     * \brief Game Constructor for the class game
+     */
     Game();
 
+    /*!
+     * \brief list_observer lists the list of observers of this class
+     * \return the list of observers
+     */
     inline std::list<Observer *> list_observer();
 
     /*!
@@ -88,9 +95,7 @@ public :
      * move a marble of his own color.
      *
      *
-     * \param posBeginFirst the initial position of the first marble of a group.
-     *
-     * \param posBeginLast the initial position of the last marble of a group.
+     * \param posBegin the initial position of the first marble of a group.
      *
      * \param posEnd the position where the first marble has to go.
      *
@@ -109,7 +114,7 @@ public :
      *
      * \param posBeginLast the initial position of the last marble of a group.
      *
-     * \param posEnd the position where the first marble has to go.
+     * \param posEndFirst the position where the first marble has to go.
      *
      * \throw an exception will be thrown if the movement that the player tries to
      *  make is not possible.
@@ -151,7 +156,7 @@ public :
     /*!
      * \brief gets a movement in a string and tries to perform that movement.
      *
-     * \param the movement to perform.
+     * \param s the movement to perform.
      *
      */
     void stringToMovement(std::string s);

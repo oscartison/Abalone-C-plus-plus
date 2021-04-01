@@ -28,7 +28,7 @@ public :
      * constructs a player with a number between 1 and 2.
      * every player constructed starts with 14 marbles.
      *
-     * \param the number of the player
+     * \param nb the number of the player
      *
      * \throw std::invalid_argument if the nb is not 1 or 2.
      */

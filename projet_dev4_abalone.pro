@@ -7,3 +7,5 @@ SUBDIRS += \
 
 OTHER_FILES += \
     defaults.pri
+
+CONFIG += ordered

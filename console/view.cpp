@@ -17,9 +17,9 @@ View::~View() {
 
 void View::printWin() {
     if (subject_->playerBlack().nbMarbles() == 8) {
-        std::cout << "Player o won!!" << std::endl;
+        std::cout << "Congrats ! Player o won!!" << std::endl;
     } else if (subject_->playerWhite().nbMarbles() == 8) {
-        std::cout << "Player x won!!" << std::endl;
+        std::cout << "Congrats ! Player x won!!" << std::endl;
     }
 }
 

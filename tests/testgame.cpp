@@ -66,7 +66,6 @@ TEST_CASE("Test on the game") {
         game.makeMove(abalone::model::Position(6,0,6),abalone::model::Position(6,1,5));
         game.makeMove(abalone::model::Position(7,2,3),abalone::model::Position(6,3,3));
         game.makeMove(abalone::model::Position(6,1,5),abalone::model::Position(6,2,4));
-        game.makeMove(abalone::model::Position(6,6,0),abalone::model::Position(6,5,1));
         REQUIRE_THROWS(game.makeMove(abalone::model::Position(6,6,0),abalone::model::Position(6,5,1)));
     }
 
@@ -191,17 +190,17 @@ TEST_CASE("Test on the game") {
     }
 
     SECTION("Checks if a player has won") {
-        game.makeMove(abalone::model::Position(3,8,1),abalone::model::Position(4,7,1));
-        game.makeMove(abalone::model::Position(0,5,7),abalone::model::Position(1,4,7));
-        game.makeMove(abalone::model::Position(4,7,1),abalone::model::Position(5,6,1));
-        game.makeMove(abalone::model::Position(1,4,7),abalone::model::Position(2,3,7));
-        game.makeMove(abalone::model::Position(5,6,1),abalone::model::Position(6,5,1));
-        game.makeMove(abalone::model::Position(2,3,7),abalone::model::Position(3,2,7));
-        game.makeMove(abalone::model::Position(6,5,1),abalone::model::Position(7,4,1));
-        game.makeMove(abalone::model::Position(3,2,7),abalone::model::Position(4,1,7));
-        game.makeMove(abalone::model::Position(7,4,1),abalone::model::Position(8,3,1));
-        game.makeMove(abalone::model::Position(4,1,7),abalone::model::Position(5,0,7));
-        game.makeMove(abalone::model::Position(4,8,0),abalone::model::Position(5,7,0));
+        game.makeMove(abalone::model::Position(3,8,1),abalone::model::Position(4,8,0));
+        game.makeMove(abalone::model::Position(0,5,7),abalone::model::Position(0,4,8));
+        game.makeMove(abalone::model::Position(4,7,1),abalone::model::Position(5,7,0));
+        game.makeMove(abalone::model::Position(1,4,7),abalone::model::Position(1,3,7));
+        game.makeMove(abalone::model::Position(5,6,1),abalone::model::Position(6,6,0));
+        game.makeMove(abalone::model::Position(2,4,6),abalone::model::Position(1,4,7));
+        game.makeMove(abalone::model::Position(6,5,1),abalone::model::Position(7,5,0));
+        game.makeMove(abalone::model::Position(0,4,8),abalone::model::Position(0,5,7));
+        game.makeMove(abalone::model::Position(6,4,2),abalone::model::Position(7,4,1));
+        game.makeMove(abalone::model::Position(0,5,7),abalone::model::Position(0,4,8));
+        game.makeMove(abalone::model::Position(8,3,1),abalone::model::Position(8,4,0));
         //g.makeMove(abalone::model::Position(0,4,8),abalone::model::Position(1,3,8));
         REQUIRE(game.checkWon());
     }
@@ -211,17 +210,17 @@ TEST_CASE("Test on the game") {
     }
 
     SECTION("Checks if the board is clean at the end") {
-        game.makeMove(abalone::model::Position(3,8,1),abalone::model::Position(4,7,1));
-        game.makeMove(abalone::model::Position(0,5,7),abalone::model::Position(1,4,7));
-        game.makeMove(abalone::model::Position(4,7,1),abalone::model::Position(5,6,1));
-        game.makeMove(abalone::model::Position(1,4,7),abalone::model::Position(2,3,7));
-        game.makeMove(abalone::model::Position(5,6,1),abalone::model::Position(6,5,1));
-        game.makeMove(abalone::model::Position(2,3,7),abalone::model::Position(3,2,7));
-        game.makeMove(abalone::model::Position(6,5,1),abalone::model::Position(7,4,1));
-        game.makeMove(abalone::model::Position(3,2,7),abalone::model::Position(4,1,7));
-        game.makeMove(abalone::model::Position(7,4,1),abalone::model::Position(8,3,1));
-        game.makeMove(abalone::model::Position(4,1,7),abalone::model::Position(5,0,7));
-        game.makeMove(abalone::model::Position(4,8,0),abalone::model::Position(5,7,0));
+        game.makeMove(abalone::model::Position(3,8,1),abalone::model::Position(4,8,0));
+        game.makeMove(abalone::model::Position(0,5,7),abalone::model::Position(0,4,8));
+        game.makeMove(abalone::model::Position(4,7,1),abalone::model::Position(5,7,0));
+        game.makeMove(abalone::model::Position(1,4,7),abalone::model::Position(1,3,7));
+        game.makeMove(abalone::model::Position(5,6,1),abalone::model::Position(6,6,0));
+        game.makeMove(abalone::model::Position(2,4,6),abalone::model::Position(1,4,7));
+        game.makeMove(abalone::model::Position(6,5,1),abalone::model::Position(7,5,0));
+        game.makeMove(abalone::model::Position(0,4,8),abalone::model::Position(0,5,7));
+        game.makeMove(abalone::model::Position(6,4,2),abalone::model::Position(7,4,1));
+        game.makeMove(abalone::model::Position(0,5,7),abalone::model::Position(0,4,8));
+        game.makeMove(abalone::model::Position(8,3,1),abalone::model::Position(8,4,0));
         game.cleanBoard();
         bool marbleAtPosition = false;
         for(auto x = 0; x < game.getBoard().size(); x++) {

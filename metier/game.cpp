@@ -97,7 +97,7 @@ void Game::makeMove(Position posBegin, Position posEnd) {
             gameBoard_.changePosition(posBegin,nextPosition);
             changeTurn();
             notifyObservers();
-        } else if (j<=i) {
+        } else if (j<=i && i < 3) {
             gameBoard_.changePosition(posForPlayer,nextPosition);
             gameBoard_.changePosition(posBegin,posForPlayer);
             changeTurn();

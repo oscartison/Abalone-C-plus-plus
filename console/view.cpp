@@ -30,8 +30,8 @@ void View::printGame(){
         for (auto y = subject_->getBoard().size() - 1; y >= 0; y--) {
             std::cout << "";
             for (auto x = 0; x < subject_->getBoard().size(); x++) {
-                abalone::model::Position pos = abalone::model::Position(x,y,z);
-                if (subject_->getBoard().isPosPossible(pos)) {
+                abalone::model::Position position = abalone::model::Position(x,y,z);
+                if (subject_->getBoard().isPosPossible(position)) {
                     if (x == 4 && y == 8 && z == 0) {
                         std::cout << "     I--/";
                     } else if (x == 3 && y == 8 && z == 1) {
@@ -52,8 +52,8 @@ void View::printGame(){
                         std::cout << "     A--\\";
                     }
 
-                    if (subject_->getBoard().playerAtPosition(pos)) {
-                        std::cout << ((subject_->getBoard().playerAtPosition(pos)->nb() == 1) ? "o ":"x ");
+                    if (subject_->getBoard().playerAtPosition(position)) {
+                        std::cout << ((subject_->getBoard().playerAtPosition(position)->id() == 1) ? "o ":"x ");
                     } else {
                         std::cout <<  ". ";
                     }
@@ -88,9 +88,9 @@ void View::printGame(){
 
 void View::update(const Observable * subject) {
     if (subject != subject_) return;
-    std::string str = "Player turn: ";
-    std::string str2 = (subject_->playerTurn()->nb() == 1) ? "o" : "x";
-    std::cout << str << str2 << std::endl;
+    std::string string = "Player turn: ";
+    std::string string2 = (subject_->playerTurn()->id() == 1) ? "o" : "x";
+    std::cout << string << string2 << std::endl;
     printGame();
     printWin();
 }

@@ -3,8 +3,8 @@
 
 namespace abalone { namespace model {
 
-Player::Player(int nb) :
-    nb_ {(nb == 1 || nb == 2) ? nb : throw std::invalid_argument("Player must be 1 or 2.")},
+Player::Player(int id) :
+    id_ {(id == 1 || id == 2) ? id : throw std::invalid_argument("Player must be 1 or 2.")},
     nbMarbles_ {14}
 {}
 

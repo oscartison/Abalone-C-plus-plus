@@ -5,7 +5,6 @@ namespace abalone { namespace model {
 
 Board::Board(Player & playerBlack, Player &playerWhite) :
     marbles_ {}
-
 {
     for (auto x = 0; x < size(); x++) {
         for (auto y = 0; y < size(); y++) {
@@ -26,29 +25,29 @@ Board::Board(Player & playerBlack, Player &playerWhite) :
     }
 }
 
-Marble * Board::marbleAtPosition(Position pos) {
-    if (isPosPossible(pos)) {
-        return (marbles_[pos.x()][pos.y()][pos.z()]) ? *marbles_[pos.x()][pos.y()][pos.z()]: NULL;
+Marble * Board::marbleAtPosition(Position position) {
+    if (isPosPossible(position)) {
+        return (marbles_[position.x()][position.y()][position.z()]) ? *marbles_[position.x()][position.y()][position.z()]: NULL;
     } else {
         return NULL;
     }
 }
 
-Player * Board::playerAtPosition(Position pos) {
-    if (marbleAtPosition(pos)) {
-        return marbleAtPosition(pos)->player();
+Player * Board::playerAtPosition(Position position) {
+    if (marbleAtPosition(position)) {
+        return marbleAtPosition(position)->player();
     } else {
         return NULL;
     }
 }
 
-void Board::deleteAtPos(Position pos) {
-        delete (*marbles_[pos.x()][pos.y()][pos.z()]);
-        *marbles_[pos.x()][pos.y()][pos.z()] = NULL;
+void Board::deleteAtPosition(Position position) {
+        delete (*marbles_[position.x()][position.y()][position.z()]);
+        *marbles_[position.x()][position.y()][position.z()] = NULL;
 }
 
-bool Board::isPosPossible(Position pos) {
-    return pos.isPossiblePos(size());
+bool Board::isPosPossible(Position position) {
+    return position.isPossiblePos(size());
 }
 
 void Board::changePosition(Position posBegin, Position posEnd) {
@@ -57,7 +56,7 @@ void Board::changePosition(Position posBegin, Position posEnd) {
         *marbles_[posBegin.x()][posBegin.y()][posBegin.z()] = NULL;
     } else {
         marbleAtPosition(posBegin)->player()->deleteMarble();
-        deleteAtPos(posBegin);
+        deleteAtPosition(posBegin);
     }
 }
 

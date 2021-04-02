@@ -76,46 +76,46 @@ public :
     /*!
      * \brief computes the distance between two positions.
      *
-     * \param po2 the second position.
+     * \param position2 the second position.
      *
      * \return the distance between the two positions.
      */
-    int distance(Position po2);
+    int distance(Position position2);
 
 };
 
 /*!
  * \brief the - operator for 2 positions.
  *
- * \param p1 the first position.
+ * \param position1 the first position.
  *
- * \param p2 the second position.
+ * \param position2 the second position.
  *
  * \return the substraction of the 2 positions.
  */
-abalone::model::Position operator-(const abalone::model::Position p1, const abalone::model::Position p2);
+abalone::model::Position operator-(const abalone::model::Position position1, const abalone::model::Position position2);
 
 /*!
  * \brief the + operator for 2 positions
  *
- * \param p1 the first position
+ * \param position1 the first position
  *
- * \param p2 the second position
+ * \param position2 the second position
  *
  * \return the sum of the 2 positions
  */
-abalone::model::Position operator+(const abalone::model::Position p1, const abalone::model::Position p2);
+abalone::model::Position operator+(const abalone::model::Position position1, const abalone::model::Position position2);
 
 /*!
  * \brief abaToPos this method will take 2 chars in a
  *  string in aba pro and makes a position out of it
- * \param s the string to convert in a position
+ * \param string the string to convert in a position
  * \return the position
  *
  * \throw an exception is thrown if the given string is not
  *  in aba-pro
  */
-abalone::model::Position abaToPos(std::string s);
+abalone::model::Position abaToPosition(std::string string);
 
 int abalone::model::Position::x() const {
     return x_;

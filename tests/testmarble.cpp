@@ -5,11 +5,11 @@ namespace abalone { namespace test {
 
 TEST_CASE("Test on a marble") {
 
-    abalone::model::Player p = abalone::model::Player(1);
-    abalone::model::Marble m = abalone::model::Marble(p);
+    abalone::model::Player player = abalone::model::Player(1);
+    abalone::model::Marble marble = abalone::model::Marble(player);
 
     SECTION("test the getter") {
-        REQUIRE(m.player()->nb() == p.nb());
+        REQUIRE(marble.player()->id() == player.id());
     }
 
 }

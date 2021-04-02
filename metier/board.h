@@ -57,42 +57,44 @@ public :
      *
      * \return the vector with the marbles on the board
      */
-    inline std::array<std::array<std::array<std::optional<Marble*>,size_>,size_>, size_> marbles() const;
+    inline std::array<std::array<std::array<std::optional<Marble*>,size_>,size_>,size_> marbles() const;
 
     /*!
      * \brief checks for a marble at a certain position
      *
-     * \param pos the position to check
+     * \param position the position to check
      *
      * \return the marble at this position,
      * if there is no marble it returns null
      */
-    Marble * marbleAtPosition(Position pos);
+    Marble * marbleAtPosition(Position position);
 
     /*!
      * \brief checks if a position is possible
      * according to the size of the board
      *
-     * \param pos the position to check
+     * \param position the position to check
      *
      * \return true if the position is possible, false otherwise
      */
-    bool isPosPossible(Position pos);
+    bool isPosPossible(Position position);
 
     /*!
      * \brief checks for a player at a certain position
      *
+     * \param position to check
+     *
      * \return the player at this position,
      * if there is no player it returns null
      */
-    Player * playerAtPosition(Position pos) ;
+    Player * playerAtPosition(Position position);
 
     /*!
      * \brief deletes the marble at this position
      *
-     * \param pos the position to delete
+     * \param position the position to delete
      */
-    void deleteAtPos(Position pos);
+    void deleteAtPosition(Position position);
 
     /*!
      * \brief makes a marble move from a certain position to another.

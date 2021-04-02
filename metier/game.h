@@ -146,7 +146,7 @@ public :
      *
      * \throw if the move is not possible an exception will be thrown.
      */
-    bool isMovePossible(Position posBeginFirst,Position posBeginLast);
+    bool isMovePossible(Position posBeginFirst, Position posBeginLast);
 
     /*!
      * \brief cleans the board at the end of the game to avoid having memory leaks.
@@ -156,10 +156,10 @@ public :
     /*!
      * \brief gets a movement in a string and tries to perform that movement.
      *
-     * \param s the movement to perform.
+     * \param string the movement to perform.
      *
      */
-    void stringToMovement(std::string s);
+    void stringToMovement(std::string string);
 
 private :
 

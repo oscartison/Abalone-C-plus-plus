@@ -51,6 +51,8 @@ public :
      */
     void printWin();
 
-};}}
+};
+
+}}
 
 #endif // VIEW_H

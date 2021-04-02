@@ -5,16 +5,16 @@ namespace abalone { namespace test {
 
 TEST_CASE("Test on the player") {
 
-    abalone::model::Player p = abalone::model::Player(2);
+    abalone::model::Player player = abalone::model::Player(2);
 
     SECTION("Test getters") {
-       REQUIRE(p.nbMarbles() == 14);
-       REQUIRE(p.nb() == 2);
+       REQUIRE(player.nbMarbles() == 14);
+       REQUIRE(player.id() == 2);
     }
 
     SECTION("Test delete") {
-       p.deleteMarble();
-       REQUIRE(p.nbMarbles() == 13);
+       player.deleteMarble();
+       REQUIRE(player.nbMarbles() == 13);
     }
 
 }

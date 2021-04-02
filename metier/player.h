@@ -13,7 +13,7 @@ class Player {
     /*!
      * \brief the number of the player
      */
-    const int nb_;
+    const int id_;
 
     /*!
      * \brief the amount of marbles the player has left.
@@ -28,18 +28,18 @@ public :
      * constructs a player with a number between 1 and 2.
      * every player constructed starts with 14 marbles.
      *
-     * \param nb the number of the player
+     * \param id the number of the player
      *
-     * \throw std::invalid_argument if the nb is not 1 or 2.
+     * \throw std::invalid_argument if the id is not 1 or 2.
      */
-    Player(int nb);
+    Player(int id);
 
     /*!
      * \brief getter for the number of the player
      *
      * \return the number of the player
      */
-    inline int nb() const;
+    inline int id() const;
 
     /*!
      * \brief getter for the amount of marbles the player has left.
@@ -55,8 +55,8 @@ public :
 
 };
 
-int abalone::model::Player::nb() const {
-    return nb_;
+int abalone::model::Player::id() const {
+    return id_;
 }
 
 int abalone::model::Player::nbMarbles() const {

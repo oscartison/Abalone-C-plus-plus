@@ -14,9 +14,9 @@ int main() {
         while (!readSuccess) {
             std::cout << "Please enter a movement in ABA-Pro : ";
             try {
-                std::string s;
-                std::getline(std::cin, s);
-                game.stringToMovement(s);
+                std::string string;
+                std::getline(std::cin, string);
+                game.stringToMovement(string);
                 readSuccess = true;
             }
             catch (const std::exception & e) {

@@ -17,41 +17,41 @@ bool Position::isPossiblePos(int size) {
     return inside && possible;
 }
 
-int Position::distance(Position po2) {
-    return std::max({abs(x_ - po2.x()), abs(y_ - po2.y()), abs(z_ - po2.z())});
+int Position::distance(Position position2) {
+    return std::max({abs(x_ - position2.x()), abs(y_ - position2.y()), abs(z_ - position2.z())});
 }
 
-Position operator+(const Position p1, const Position p2) {
-    return Position(p1.x()+p2.x(),p1.y()+p2.y(),p1.z()+p2.z());
+Position operator+(const Position position1, const Position position2) {
+    return Position(position1.x()+position2.x(), position1.y()+position2.y(), position1.z()+position2.z());
 }
 
-Position operator-(const Position p1, const Position p2) {
-    return Position(p1.x()-p2.x(),p1.y()-p2.y(),p1.z()-p2.z());
+Position operator-(const Position position1, const Position position2) {
+    return Position(position1.x()-position2.x(),position1.y()-position2.y(),position1.z()-position2.z());
 }
 
-Position abaToPos(std::string string) {
-    char charPart = string[0];
-    int intPart = string[1] - 48;
+Position abaToPosition(std::string string) {
+    char charAba = string[0];
+    int intAba = string[1] - 48;
     Position posBegin {Position(4,4,4)};
 
-    if (charPart < 'J' &&  charPart >= 'A' && intPart > 0 && intPart < 10) {
-        char charBegin {'E'};
-        int intBegin {5};
-        int charDif = charBegin - charPart;
-        int intDif = intBegin - intPart;
+    if (charAba < 'J' &&  charAba >= 'A' && intAba > 0 && intAba < 10) {
+        char charAbaBegin {'E'};
+        int intAbaBegin {5};
+        int charAbaDiff = charAbaBegin - charAba;
+        int intAbaDiff = intAbaBegin - intAba;
 
-        for (int i = 0; i < abs(charDif);i++) {
-            if (charDif < 0) {
+        for (int i = 0; i < abs(charAbaDiff); i++) {
+            if (charAbaDiff < 0) {
                 posBegin = posBegin + Position(0,1,-1);
-            } else if (charDif > 0){
+            } else if (charAbaDiff > 0){
                 posBegin = posBegin + Position(0,-1,1);
             }
         }
 
-        for (int i = 0; i < abs(intDif); i++) {
-            if (intDif < 0) {
+        for (int i = 0; i < abs(intAbaDiff); i++) {
+            if (intAbaDiff < 0) {
                 posBegin = posBegin + Position(1,-1,0);
-            } else if (intDif > 0) {
+            } else if (intAbaDiff > 0) {
                 posBegin = posBegin + Position(-1,1,0);
             }
         }

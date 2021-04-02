@@ -17,4 +17,4 @@ doxygen Doxygen.config
 
 ## Remise 2 : sous-projet console
 
-Dans cette remise, nous avons implementé tous les headers de la remise précédente. Nous avons aussi ajouté la partie console qui permet de jouer ce jeu dans la console en specifiant les coups en ABA-pro.
+Dans cette remise, nous avons implementé tous les headers de la remise précédente. Nous avons aussi ajouté la partie console qui permet de jouer à ce jeu dans la console en specifiant les coups en ABA-pro.

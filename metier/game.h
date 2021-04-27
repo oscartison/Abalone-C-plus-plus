@@ -5,7 +5,7 @@
 #include "observable.h"
 #include <ostream>
 
-namespace abalone { namespace view { class View; }}
+namespace abalone { namespace view { class View; class MainWindow; }}
 
 namespace abalone { namespace model {
 
@@ -177,6 +177,8 @@ private :
     void changeTurn();
 
     friend class abalone::view::View;
+
+    friend class abalone::view::MainWindow;
 
 protected :
 

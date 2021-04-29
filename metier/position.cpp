@@ -29,6 +29,10 @@ Position operator-(const Position position1, const Position position2) {
     return Position(position1.x()-position2.x(),position1.y()-position2.y(),position1.z()-position2.z());
 }
 
+bool operator==(const Position position1, const Position position2) {
+    return position1.x()==position2.x() && position1.y()==position2.y() && position1.z()==position2.z();
+}
+
 Position abaToPosition(std::string string) {
     char charAba = string[0];
     int intAba = string[1] - 48;

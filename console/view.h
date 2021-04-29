@@ -1,5 +1,6 @@
 #ifndef VIEW_H
 #define VIEW_H
+
 #include "observer.h"
 #include "game.h"
 

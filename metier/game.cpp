@@ -109,7 +109,7 @@ void Game::makeMove(Position posBegin, Position posEnd) {
 void Game::makeMove(Position posBeginFirst, Position posBeginLast, Position posEndFirst) {
     if (isMovePossible(posBeginFirst,posBeginLast)) {
         Position movement = posBeginFirst - posEndFirst;
-        if (posBeginFirst.distance(posBeginLast) == 1) {
+        if (posBeginFirst.distance(posBeginLast) == 1 && posBeginFirst.distance(posEndFirst) == 1) {
             if (!gameBoard_.marbleAtPosition(posEndFirst) &&
                     !gameBoard_.marbleAtPosition(posBeginLast-movement)) {
                 gameBoard_.changePosition(posBeginFirst,posEndFirst);
@@ -117,7 +117,7 @@ void Game::makeMove(Position posBeginFirst, Position posBeginLast, Position posE
                 changeTurn();
                 notifyObservers();
             }
-        } else if (posBeginFirst.distance(posBeginLast) == 2) {
+        } else if (posBeginFirst.distance(posBeginLast) == 2&& posBeginFirst.distance(posEndFirst) == 1) {
             Position middle = Position((posBeginFirst.x()+posBeginLast.x()) / 2,
                                        (posBeginFirst.y()+posBeginLast.y()) / 2,
                                        (posBeginFirst.z()+posBeginLast.z()) / 2);

@@ -1,5 +1,3 @@
-#include "hexacell.h"
-
 #include <QGraphicsSceneMouseEvent>
 #include <QPen>
 #include <QBrush>
@@ -9,11 +7,14 @@
 #include <cmath>
 
 #include "point.hpp"
+#include "hexacell.h"
+
+namespace abalone { namespace view {
 
 double const HexaCell::zValMax = 10000;//arbitrary
 
-HexaCell::HexaCell(double rad, double dx, double dy, QGraphicsItem *parent)
-    : QGraphicsPolygonItem(parent), rad(rad), dx(dx), dy(dy), mouseover(false), selected(false), moved(false)
+HexaCell::HexaCell(abalone::model::Position pos,  double rad, double dx, double dy, QGraphicsItem *parent)
+    : QGraphicsPolygonItem(parent), list_observer_ (),rad(rad), dx(dx), dy(dy), mouseover(false), selected(false), moved(false), pos_(pos)
 {
     this->setAcceptHoverEvents(true);
     zval = zValue();
@@ -83,17 +84,13 @@ void HexaCell::hoverLeaveEvent(QGraphicsSceneHoverEvent *event)
 
 void HexaCell::mousePressEvent(QGraphicsSceneMouseEvent * event)
 {
-    moved = false;    
-    selected = !selected; //I'd like to put this in "released"
+    //  std::cout << pos_.x() << pos_.y() << pos_.z() << std::endl;
+    moved = false;
+    notifyObservers();
+    selected = !selected;
     update();
-
     //relaunches the event in order to allow dragging
     QGraphicsItem::mousePressEvent(event);
-}
-
-void HexaCell::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
-{
-    //why isn't this ever fired ?
 }
 
 void HexaCell::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
@@ -101,12 +98,6 @@ void HexaCell::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
     moved = true;
 }
 
-void HexaCell::wheelEvent(QGraphicsSceneWheelEvent *event)
-{
-    //write stuff here
-    //rad +/-= 10 ?
+}}
 
-    QGraphicsItem::wheelEvent(event);
-}
 #pragma GCC diagnostic pop
-

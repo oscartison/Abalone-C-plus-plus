@@ -5,6 +5,8 @@
 #include <QPolygonF>
 #include <string>
 #include <QPointF>
+#include "position.h"
+#include "observable.h"
 
 class QPainter;
 class QStyleOptionGraphicsItem;
@@ -13,31 +15,42 @@ class QGraphicsSceneHoverEvent;
 class QGraphicsSceneMouseEvent;
 class QGraphicsSceneWheelEvent;
 
-class HexaCell  : public QGraphicsPolygonItem
+namespace abalone { namespace view {
+
+class HexaCell : public QGraphicsPolygonItem, public Observable
 {
-    static const double zValMax; //z-val of selected items
-    double zval; //z-val at instanciation
+    static const double zValMax; // z-val of selected items
+    double zval; // z-val at instanciation
+    std::list<Observer *> list_observer_;
 
-    protected:
-        double rad, dx, dy;//hexagon radius, coordinate (x,y) of center
-        bool mouseover, selected, moved;//mouse interaction booleans
+protected :
 
-    public:
-        HexaCell(double rad = 100, double dx = 0, double dy = 0, QGraphicsItem * parent = 0);
+    double rad, dx, dy; // hexagon radius, coordinate (x,y) of center
 
-        void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget);
+    bool mouseover, selected, moved; // mouse interaction booleans
 
-        inline QPointF coord(double x, double y) const;
+public :
 
-        inline void setLocation(double x, double y);
+    abalone::model::Position pos_;
 
-    protected:
-        void hoverEnterEvent(QGraphicsSceneHoverEvent * event);
-        void hoverLeaveEvent(QGraphicsSceneHoverEvent * event);
-        void mousePressEvent(QGraphicsSceneMouseEvent * event);
-        void mouseReleaseEvent(QGraphicsSceneMouseEvent * event);
-        void mouseMoveEvent(QGraphicsSceneMouseEvent * event);
-        void wheelEvent(QGraphicsSceneWheelEvent * event);
+    HexaCell(abalone::model::Position pos, double rad = 100, double dx = 0, double dy = 0, QGraphicsItem * parent = 0);
+
+    void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget);
+
+    inline QPointF coord(double x, double y) const;
+
+    inline void setLocation(double x, double y);
+
+
+protected :
+
+    void hoverEnterEvent(QGraphicsSceneHoverEvent * event);
+    void hoverLeaveEvent(QGraphicsSceneHoverEvent * event);
+    void mousePressEvent(QGraphicsSceneMouseEvent * event);
+    void mouseMoveEvent(QGraphicsSceneMouseEvent * event);
+
 };
+
+}}
 
 #endif // HEXACELL_H

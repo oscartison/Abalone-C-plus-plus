@@ -7,9 +7,9 @@ namespace abalone { namespace model {
 
 Game::Game():
     list_observer_ {},
-    playerWhite_ {Player(1)},
-    playerBlack_ {Player(2)},
-    playerTurn_ {&playerWhite()},
+    playerWhite_ {Player(2)},
+    playerBlack_ {Player(1)},
+    playerTurn_ {&playerBlack()},
     gameBoard_ {Board(playerBlack(), playerWhite())}
 {}
 
@@ -18,7 +18,7 @@ bool Game::checkWon() {
 }
 
 void Game::changeTurn() {
-    setTurn((playerTurn()->id() == 1) ? playerBlack() : playerWhite());
+    setTurn((playerTurn()->id() == 2) ? playerBlack() : playerWhite());
 }
 
 void Game::setTurn(Player &player) {

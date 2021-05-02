@@ -60,4 +60,9 @@ void Board::changePosition(Position posBegin, Position posEnd) {
     }
 }
 
+Board& Board::operator= (const Board& f) {
+    marbles_ = f.marbles();
+    return *this;
+}
+
 }}

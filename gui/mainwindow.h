@@ -5,6 +5,9 @@
 #include <QGraphicsView>
 #include <QPushButton>
 #include <QLabel>
+#include <QListWidget>
+#include <hexacell.h>
+
 
 #include "game.h"
 #include "observer.h"
@@ -23,6 +26,8 @@ class MainWindow : public QMainWindow, public Observer
     QLabel* black_;
     QLabel* white_;
     QLabel* turn_;
+    QList<abalone::view::HexaCell *> board_;
+    QList<QGraphicsEllipseItem *> marbles_;
     std::vector<abalone::model::Position> move_;
 
 public :
@@ -30,9 +35,11 @@ public :
     MainWindow(model::Game * subject = nullptr, QWidget *parent = nullptr);
     ~MainWindow();
     virtual void update(const Observable * subject) override;
+    QString printWin();
+    void showMenu();
 
 private slots :
-
+     void restart();
     void makeMove();
     void addPosToMove(abalone::model::Position pos);
 

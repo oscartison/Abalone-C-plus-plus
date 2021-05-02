@@ -105,6 +105,8 @@ public :
      */
     void changePosition(Position posBegin, Position posEnd);
 
+    Board& operator= (const Board& f);
+
 };
 
 int abalone::model::Board::size() const {

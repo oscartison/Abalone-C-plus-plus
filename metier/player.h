@@ -13,7 +13,7 @@ class Player {
     /*!
      * \brief the number of the player
      */
-    const int id_;
+    int id_;
 
     /*!
      * \brief the amount of marbles the player has left.
@@ -52,6 +52,8 @@ public :
      * \brief reduces the number of marble the players has by 1.
      */
     void deleteMarble();
+
+    Player& operator= (const Player& f);
 
 };
 

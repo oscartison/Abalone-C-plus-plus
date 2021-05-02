@@ -12,4 +12,10 @@ void Player::deleteMarble() {
     nbMarbles_ -= 1;
 }
 
+         Player& Player::operator= (const Player& f) {
+        id_ = f.id();
+        nbMarbles_ = f.nbMarbles_;
+        return *this;
+}
+
 }}

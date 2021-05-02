@@ -31,6 +31,8 @@ protected :
 
 public :
 
+    void init();
+
     abalone::model::Position pos_;
 
     HexaCell(abalone::model::Position pos, double rad = 100, double dx = 0, double dy = 0, QGraphicsItem * parent = 0);

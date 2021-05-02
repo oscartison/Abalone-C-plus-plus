@@ -8,4 +8,4 @@ CONFIG += c++17
 
 QMAKE_CXXFLAGS += -Wpedantic -Werror
 
-win32:RC_ICONS += abalone.ico
+

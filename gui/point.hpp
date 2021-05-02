@@ -141,7 +141,7 @@ point<T> polar_translate(const point<T>& p, const T& mod, const T& arg)
 template<class T>
 auto orbit(const point<T>& p, unsigned n, T radius, T arg_shift = 0)
 {
-    static constexpr T PI = atan(1) * 4;
+    static const T PI = atan(1) * 4;
     
     T angle = 2 * PI / n;
     std::vector<point<T>> points(n);

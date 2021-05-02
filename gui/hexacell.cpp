@@ -82,9 +82,13 @@ void HexaCell::hoverLeaveEvent(QGraphicsSceneHoverEvent *event)
     update();
 }
 
+void HexaCell::init() {
+    mouseover = false;
+    selected = false;
+    moved = false;
+}
 void HexaCell::mousePressEvent(QGraphicsSceneMouseEvent * event)
 {
-    //  std::cout << pos_.x() << pos_.y() << pos_.z() << std::endl;
     moved = false;
     notifyObservers();
     selected = !selected;

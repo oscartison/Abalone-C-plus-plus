@@ -161,6 +161,10 @@ public :
      */
     void stringToMovement(std::string string);
 
+    Game& operator= (const Game& f);
+
+    void reset();
+
 private :
 
     /*!

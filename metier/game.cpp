@@ -151,4 +151,14 @@ void Game::cleanBoard() {
     }
 }
 
+void Game::reset() {
+    if(checkWon()) {
+        playerBlack_ = Player(1);
+        playerWhite_ = Player(2);
+        playerTurn_  =&playerBlack();
+        gameBoard_ = Board(playerBlack(), playerWhite());
+        notifyObservers();
+    }
+}
+
 }}

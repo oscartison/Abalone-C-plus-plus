@@ -68,7 +68,7 @@ QString MainWindow::printWin() {
 
 MainWindow::~MainWindow()
 {
-    subject_->~Game();
+
 }
 
 void MainWindow::restart() {
@@ -173,8 +173,6 @@ void MainWindow::update(const Observable *subject) {
             for(auto i = 0; i < marbles_.size();i++){
                 marbles_.at(i)->hide();
             }
-          // marbles_.clear();
-         // qDeleteAll(marbles_.begin(),marbles_.end());
 
             for (auto z = 0; z < subject_->getBoard().size(); z++) {
                 for (auto y = 0; y < subject_->getBoard().size(); y++) {

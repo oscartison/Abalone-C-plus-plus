@@ -161,8 +161,10 @@ public :
      */
     void stringToMovement(std::string string);
 
-    Game& operator= (const Game& f);
 
+    /*!
+     * \brief resets the state of the game to the initial state of a new game
+     */
     void reset();
 
 private :

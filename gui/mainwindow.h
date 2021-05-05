@@ -31,16 +31,56 @@ class MainWindow : public QMainWindow, public Observer
     std::vector<abalone::model::Position> move_;
 
 public :
+    /**
+     * @brief drawInfo draws the information about the state of the game
+     * ex. remaining marbles, player's turn,...
+     */
     void drawInfo();
+
+    /**
+     * @brief MainWindow the constructor of the user interface to play the game.
+     * @param subject the game that will be played on the the user interface
+     * @param parent the parent widget of this window
+     */
     MainWindow(model::Game * subject = nullptr, QWidget *parent = nullptr);
+
+    /**
+     * @brief ~MainWindow the destructor for MainWindow.
+     */
     ~MainWindow();
+
+    /**
+     * @brief update updates the window when a change has been made in the subject
+     * @param subject the subject that notified the window that he changed
+     */
     virtual void update(const Observable * subject) override;
+
+    /**
+     * @brief printWin prints a message when a player has won
+     * @return the player that won with congratulations
+     */
     QString printWin();
+
+    /**
+     * @brief showMenu shows a messageBox where the players can choose to quit the game or restart a new game.
+     */
     void showMenu();
 
 private slots :
+    /**
+      * @brief restart restarts a new game
+      */
      void restart();
+
+     /**
+     * @brief makeMove asks the subject to make a move with the right positions
+     */
     void makeMove();
+
+    /**
+     * @brief addPosToMove adds the selected position to a vector that contains the move to make
+     * @param pos the position to add to the vector
+     */
     void addPosToMove(abalone::model::Position pos);
 
 };

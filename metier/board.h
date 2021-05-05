@@ -31,6 +31,7 @@ class Board {
 
 public :
 
+
     /*!
      * \brief Constructor.
      *
@@ -104,8 +105,6 @@ public :
      * \param posEnd the position where the marble has to go
      */
     void changePosition(Position posBegin, Position posEnd);
-
-    Board& operator= (const Board& f);
 
 };
 

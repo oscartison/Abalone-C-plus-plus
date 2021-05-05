@@ -18,19 +18,43 @@ class QGraphicsSceneWheelEvent;
 
 namespace abalone { namespace view {
 
+/**
+ * @brief The HexaCell class
+ */
 class HexaCell : public QGraphicsPolygonItem, public Observable
 {
-    static const double zValMax; // z-val of selected items
-    double zval; // z-val at instanciation
+    /**
+     * @brief zValMax z-val of selected items.
+     */
+    static const double zValMax;
+
+    /**
+     * @brief zval z-val at instanciation.
+     */
+    double zval;
+
+    /**
+     * @brief list_observer_ the list of observers.
+     */
     std::list<Observer *> list_observer_;
 
 protected :
 
-    double rad, dx, dy; // hexagon radius, coordinate (x,y) of center
-    bool mouseover, selected; // mouse interaction booleans
+    /**
+     * @brief rad hexagon radius, coordinate (x,y) of center
+     */
+    double rad, dx, dy;
+
+    /**
+     * @brief mouseover mouse interaction booleans
+     */
+    bool mouseover, selected;
 
 public :
 
+    /**
+     * @brief pos_ the position of the hexacell in a three dimensional system.
+     */
     abalone::model::Position pos_;
 
     /**

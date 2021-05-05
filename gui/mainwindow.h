@@ -15,18 +15,61 @@
 
 namespace abalone { namespace view {
 
+/**
+ * @brief The MainWindow class
+ */
 class MainWindow : public QMainWindow, public Observer
 {
     Q_OBJECT
+
+    /**
+     * @brief subject_ the observed class.
+     */
     model::Game * subject_;
+
+    /**
+     * @brief view_ the view of the window.
+     */
     QGraphicsView * view_;
+
+    /**
+     * @brief scene_ the scene containing the view.
+     */
     QGraphicsScene  * scene_;
+
+    /**
+     * @brief button_ to make a move.
+     */
     QPushButton * button_;
+
+    /**
+     * @brief black_ the label showing the remaining black marbles.
+     */
     QLabel * black_;
+
+    /**
+     * @brief white_ the label showing the remaining white marbles.
+     */
     QLabel * white_;
+
+    /**
+     * @brief turn_ the label showing which player turn it is.
+     */
     QLabel * turn_;
+
+    /**
+     * @brief board_ a list of hexacells of the board.
+     */
     QList<abalone::view::HexaCell *> board_;
+
+    /**
+     * @brief marbles_ a list of all the marbles on the board.
+     */
     QList<QGraphicsEllipseItem *> marbles_;
+
+    /**
+     * @brief move_ a vector containing the positions of selected hexacells.
+     */
     std::vector<abalone::model::Position> move_;
 
 public :

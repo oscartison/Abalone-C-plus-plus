@@ -35,33 +35,33 @@ void HexaCell::paint(QPainter * painter, const QStyleOptionGraphicsItem * option
 {
     if(selected)
     {
-        QPen pen(Qt::blue, 5);
+        QPen pen(Qt::black, 5);
         painter->setPen(pen);
 
         QBrush brush;
-        brush.setColor(Qt::yellow);
+        brush.setColor(Qt::red);
         brush.setStyle(Qt::SolidPattern);
 
         painter->setBrush(brush);
     }
     else if(mouseover)
     {
-        QPen pen(Qt::blue, 1);
+        QPen pen(Qt::black, 1);
         painter->setPen(pen);
 
         QBrush brush;
-        brush.setColor(Qt::green);
+        brush.setColor(Qt::red);
         brush.setStyle(Qt::SolidPattern);
 
         painter->setBrush(brush);
     }
     else
     {
-        QPen pen(Qt::blue, 1);
+        QPen pen(Qt::black, 1);
         painter->setPen(pen);
 
         QBrush brush;
-        brush.setColor(Qt::cyan);
+        brush.setColor(Qt::yellow);
         brush.setStyle(Qt::SolidPattern);
 
         painter->setBrush(brush);

@@ -7,15 +7,15 @@
 #include <iostream>
 #include <QLabel>
 #include <QtAlgorithms>
-#include "game.h"
 
+#include "game.h"
 #include "mainwindow.h"
 #include "hexacell.h"
 #include "point.hpp"
 
 namespace abalone { namespace view {
 
-MainWindow::MainWindow(model::Game * subject, QWidget *parent)
+MainWindow::MainWindow(model::Game * subject, QWidget * parent)
     : QMainWindow(parent),
       subject_ {subject},
       move_{}
@@ -29,7 +29,7 @@ MainWindow::MainWindow(model::Game * subject, QWidget *parent)
             for (auto x = 0; x < subject_->getBoard().size(); x++) {
                 abalone::model::Position position = abalone::model::Position(x,y,z);
                 if (subject_->getBoard().isPosPossible(position)) {
-                    HexaCell* hexa =new HexaCell(position,rad, (x*2*w)+(z*w), z*(1.5*rad), nullptr);
+                    HexaCell * hexa =new HexaCell(position,rad, (x*2*w)+(z*w), z*(1.5*rad), nullptr);
                     hexa->registerObserver(this);
                     board_.append(hexa);
                     scene_->addItem(hexa);
@@ -50,7 +50,7 @@ MainWindow::MainWindow(model::Game * subject, QWidget *parent)
     view_->update();
     this->setCentralWidget(view_);
 
-   setWindowTitle("Abalone");
+    setWindowTitle("Abalone");
     subject_->registerObserver(this);
     update(subject);
     resize(1000,800);
@@ -60,9 +60,7 @@ QString MainWindow::printWin() {
     if (subject_->playerBlack().nbMarbles() == 8) {
         return "Congrats ! Player white won!!";
     } else {
-
-       return "Congrats ! Player black won!!" ;
-
+        return "Congrats ! Player black won!!" ;
     }
 }
 
@@ -145,19 +143,19 @@ void MainWindow::showMenu() {
     QMessageBox msgBox;
     msgBox.setText(printWin());
     msgBox.setStandardButtons(QMessageBox::Close | QMessageBox::Reset);
-     msgBox.setDefaultButton(QMessageBox::Close);
-     int ret = msgBox.exec();
-     switch (ret) {
-       case QMessageBox::Close:
-           close();
-           break;
-       case QMessageBox::Reset:
-           restart();
-           break;
-     }
+    msgBox.setDefaultButton(QMessageBox::Close);
+    int ret = msgBox.exec();
+    switch (ret) {
+    case QMessageBox::Close:
+        close();
+        break;
+    case QMessageBox::Reset:
+        restart();
+        break;
+    }
 }
 
-void MainWindow::update(const Observable *subject) {
+void MainWindow::update(const Observable * subject) {
     if (subject == subject_) {
         if(subject_->checkWon()) {
             showMenu();
@@ -187,36 +185,30 @@ void MainWindow::update(const Observable *subject) {
                                 } else {
                                     brush.setColor(Qt::white);
                                 }
-
                                 brush.setStyle(Qt::SolidPattern);
-                                QGraphicsEllipseItem* ellipse =new QGraphicsEllipseItem((x*2*w)+(z*w) - w/2, z*(1.5*rad) -w/2,w,w,nullptr);
+                                QGraphicsEllipseItem * ellipse =new QGraphicsEllipseItem((x*2*w)+(z*w) - w/2, z*(1.5*rad) -w/2,w,w,nullptr);
                                 ellipse->setBrush(brush);
                                 ellipse->setPen(pen);
                                 marbles_.push_back(ellipse);
                                 scene_->addItem(ellipse);
-
                             }
                         }
                     }
                 }
             }
             QPen pen(Qt::black, 2);
-               QBrush brush;
-               if(subject_->playerTurn()->id() == 1) {
-                   brush.setColor(Qt::black);
-               } else {
-                   brush.setColor(Qt::white);
-               }
-
-               brush.setStyle(Qt::SolidPattern);
-
-               scene_->addEllipse(1000-200+4*w,0,w,w, pen,brush);
-
+            QBrush brush;
+            if(subject_->playerTurn()->id() == 1) {
+                brush.setColor(Qt::black);
+            } else {
+                brush.setColor(Qt::white);
+            }
+            brush.setStyle(Qt::SolidPattern);
+            scene_->addEllipse(1000-200+4*w,0,w,w, pen,brush);
         }} else {
-        Observable *test = const_cast<Observable *>(subject);
-        HexaCell* h = static_cast<HexaCell*>(test);
+        Observable * test = const_cast<Observable *>(subject);
+        HexaCell * h = static_cast<HexaCell *>(test);
         addPosToMove(h->pos_);
-
     }}
 
 }}

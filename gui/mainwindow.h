@@ -8,7 +8,6 @@
 #include <QListWidget>
 #include <hexacell.h>
 
-
 #include "game.h"
 #include "observer.h"
 #include "vector"
@@ -22,15 +21,16 @@ class MainWindow : public QMainWindow, public Observer
     model::Game * subject_;
     QGraphicsView * view_;
     QGraphicsScene  * scene_;
-    QPushButton *button_;
-    QLabel* black_;
-    QLabel* white_;
-    QLabel* turn_;
+    QPushButton * button_;
+    QLabel * black_;
+    QLabel * white_;
+    QLabel * turn_;
     QList<abalone::view::HexaCell *> board_;
     QList<QGraphicsEllipseItem *> marbles_;
     std::vector<abalone::model::Position> move_;
 
 public :
+
     /**
      * @brief drawInfo draws the information about the state of the game
      * ex. remaining marbles, player's turn,...
@@ -42,7 +42,7 @@ public :
      * @param subject the game that will be played on the the user interface
      * @param parent the parent widget of this window
      */
-    MainWindow(model::Game * subject = nullptr, QWidget *parent = nullptr);
+    MainWindow(model::Game * subject = nullptr, QWidget * parent = nullptr);
 
     /**
      * @brief ~MainWindow the destructor for MainWindow.
@@ -67,12 +67,13 @@ public :
     void showMenu();
 
 private slots :
+
     /**
       * @brief restart restarts a new game
       */
-     void restart();
+    void restart();
 
-     /**
+    /**
      * @brief makeMove asks the subject to make a move with the right positions
      */
     void makeMove();

@@ -13,8 +13,8 @@ namespace abalone { namespace view {
 
 double const HexaCell::zValMax = 10000;//arbitrary
 
-HexaCell::HexaCell(abalone::model::Position pos,  double rad, double dx, double dy, QGraphicsItem *parent)
-    : QGraphicsPolygonItem(parent), list_observer_ (),rad(rad), dx(dx), dy(dy), mouseover(false), selected(false), moved(false), pos_(pos)
+HexaCell::HexaCell(abalone::model::Position pos,  double rad, double dx, double dy, QGraphicsItem * parent)
+    : QGraphicsPolygonItem(parent), list_observer_ (),rad(rad), dx(dx), dy(dy), mouseover(false), selected(false), pos_(pos)
 {
     this->setAcceptHoverEvents(true);
     zval = zValue();
@@ -31,7 +31,7 @@ HexaCell::HexaCell(abalone::model::Position pos,  double rad, double dx, double 
 
 #pragma GCC diagnostic push
 #pragma GCC diagnostic ignored "-Wunused-parameter"
-void HexaCell::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget)
+void HexaCell::paint(QPainter * painter, const QStyleOptionGraphicsItem * option, QWidget * widget)
 {
     if(selected)
     {
@@ -70,13 +70,13 @@ void HexaCell::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, 
     painter->drawPolygon(polygon());
 }
 
-void HexaCell::hoverEnterEvent(QGraphicsSceneHoverEvent *event)
+void HexaCell::hoverEnterEvent(QGraphicsSceneHoverEvent * event)
 {
     mouseover = true;
     update();
 }
 
-void HexaCell::hoverLeaveEvent(QGraphicsSceneHoverEvent *event)
+void HexaCell::hoverLeaveEvent(QGraphicsSceneHoverEvent * event)
 {
     mouseover = false;
     update();
@@ -85,21 +85,14 @@ void HexaCell::hoverLeaveEvent(QGraphicsSceneHoverEvent *event)
 void HexaCell::init() {
     mouseover = false;
     selected = false;
-    moved = false;
 }
 void HexaCell::mousePressEvent(QGraphicsSceneMouseEvent * event)
 {
-    moved = false;
     notifyObservers();
     selected = !selected;
     update();
     //relaunches the event in order to allow dragging
     QGraphicsItem::mousePressEvent(event);
-}
-
-void HexaCell::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
-{
-    moved = true;
 }
 
 }}

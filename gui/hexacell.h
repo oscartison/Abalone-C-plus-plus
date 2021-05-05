@@ -5,6 +5,7 @@
 #include <QPolygonF>
 #include <string>
 #include <QPointF>
+
 #include "position.h"
 #include "observable.h"
 
@@ -26,30 +27,69 @@ class HexaCell : public QGraphicsPolygonItem, public Observable
 protected :
 
     double rad, dx, dy; // hexagon radius, coordinate (x,y) of center
-
-    bool mouseover, selected, moved; // mouse interaction booleans
+    bool mouseover, selected; // mouse interaction booleans
 
 public :
 
-    void init();
-
     abalone::model::Position pos_;
 
+    /**
+     * @brief init sets the value of mouseover and selected to false.
+     */
+    void init();
+
+    /**
+     * @brief HexaCell the constructor for an hexacell.
+     * @param pos position of the hexacell using the three axis method.
+     * @param rad the length of the sides.
+     * @param dx the position on the x axis on the screen.
+     * @param dy the position on the y axis on the screen.
+     * @param parent the QGraphicsItem that will contain this hexacell.
+     */
     HexaCell(abalone::model::Position pos, double rad = 100, double dx = 0, double dy = 0, QGraphicsItem * parent = 0);
 
-    void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget);
+    /**
+     * @brief paint draws this hexacell on the screen.
+     * @param painter the system that will draw the hexacell.
+     * @param option the style in which the hexacell will be drawn.
+     * @param widget to draw.
+     */
+    void paint(QPainter * painter, const QStyleOptionGraphicsItem * option, QWidget * widget);
 
+    /**
+     * @brief coord returns x and y coordinates of the hexacell.
+     * @param x coordinate.
+     * @param y coordinate.
+     * @return a QPointF object containing the two coordinates.
+     */
     inline QPointF coord(double x, double y) const;
 
+    /**
+     * @brief setLocation moves the hexacell to a new location.
+     * @param x the new x position of the hexacell.
+     * @param y the new y position of the hexacell.
+     */
     inline void setLocation(double x, double y);
-
 
 protected :
 
+    /**
+     * @brief hoverEnterEvent changes the mouseover attribute to true.
+     * @param event the mouse hover the hexacell.
+     */
     void hoverEnterEvent(QGraphicsSceneHoverEvent * event);
+
+    /**
+     * @brief hoverLeaveEvent changes the mouseover attribute to false.
+     * @param event the mouse leaving the hexacell.
+     */
     void hoverLeaveEvent(QGraphicsSceneHoverEvent * event);
+
+    /**
+     * @brief mousePressEvent changes the selected attribute to its opposite.
+     * @param event the mouse clicking on the hexacell.
+     */
     void mousePressEvent(QGraphicsSceneMouseEvent * event);
-    void mouseMoveEvent(QGraphicsSceneMouseEvent * event);
 
 };
 

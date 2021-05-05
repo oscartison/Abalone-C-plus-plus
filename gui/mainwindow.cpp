@@ -205,6 +205,15 @@ void MainWindow::update(const Observable * subject) {
             }
             brush.setStyle(Qt::SolidPattern);
             scene_->addEllipse(1000-200+4*w,0,w,w, pen,brush);
+
+            QString blackLeft = "Black Marbles : ";
+            blackLeft.append(QString::number(subject_->playerBlack().nbMarbles()));
+            black_->setText(blackLeft);
+
+            QString whiteText = "White Marbles : ";
+            whiteText.append(QString::number(subject_->playerWhite().nbMarbles()));
+            white_->setText(whiteText);
+
         }} else {
         Observable * test = const_cast<Observable *>(subject);
         HexaCell * h = static_cast<HexaCell *>(test);

@@ -53,6 +53,11 @@ public :
      */
     void deleteMarble();
 
+    /**
+     * @brief operator = Assignement operator
+     * @param f the player that will be affected to this player
+     * @return the player
+     */
     Player& operator= (const Player& f);
 
 };

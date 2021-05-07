@@ -41,14 +41,29 @@ class HexaCell : public QGraphicsPolygonItem, public Observable
 protected :
 
     /**
-     * @brief rad hexagon radius, coordinate (x,y) of center
+     * @brief rad hexagon radius
      */
-    double rad, dx, dy;
+    double rad;
+
+    /**
+     * @brief dx the x coordinate of the center
+     */
+    double dx;
+
+    /**
+     * @brief dy the y coordinate of the center
+     */
+    double dy;
 
     /**
      * @brief mouseover mouse interaction booleans
      */
-    bool mouseover, selected;
+    bool mouseover;
+
+    /**
+    * @brief selected if the hexacell is selected
+    */
+    bool selected;
 
 public :
 
